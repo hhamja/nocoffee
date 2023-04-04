@@ -10,6 +10,12 @@
 .svn/
 migrate_working_dir/
 
+# 파일무시
+keystore.properties
+*.env
+
+
+
 # IntelliJ related
 *.iml
 *.ipr
