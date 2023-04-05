@@ -14,13 +14,15 @@
 import 'package:auto_route/auto_route.dart' as _i11;
 import 'package:flutter/material.dart' as _i12;
 
+import '../../features/coffee/presentation/screen/calendar_page/calendar_page.dart'
+    as _i3;
+import '../../features/coffee/presentation/screen/home_record_page/home_record_page.dart'
+    as _i2;
+import '../../features/coffee/presentation/screen/statistics_page/statistics_page.dart'
+    as _i4;
 import '../../features/common/presentation/screen/splash/splash.dart' as _i1;
 import '../../features/common/presentation/screen/tabbar_page/tabbar_page.dart'
     as _i5;
-import '../../features/record/presentation/screen/calender_page/calender_page.dart'
-    as _i3;
-import '../../features/record/presentation/screen/home_record_page/home_record_page.dart'
-    as _i2;
 import '../../features/setting/presentation/screen/notice_page/notice_page.dart'
     as _i7;
 import '../../features/setting/presentation/screen/setting_page/setting_page.dart'
@@ -31,8 +33,6 @@ import '../../features/setting/presentation/screen/terms_policy_page/terms_detai
     as _i9;
 import '../../features/setting/presentation/screen/terms_policy_page/terms_policy.dart'
     as _i10;
-import '../../features/statistics/presentation/screen/statistics_page/statistics_page.dart'
-    as _i4;
 
 class AppRouter extends _i11.RootStackRouter {
   AppRouter([_i12.GlobalKey<_i12.NavigatorState>? navigatorKey])

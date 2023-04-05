@@ -12,6 +12,10 @@ class CustomTextFormField extends StatefulWidget {
   final FocusNode? focusNode;
   final int? maxLine;
   final int? maxLength;
+  final TextInputAction? textInputAction;
+  final TextInputType keyboardType;
+  final TextAlign textAlign;
+  final List<TextInputFormatter>? inputFormatters;
 
   const CustomTextFormField({
     required this.controller,
@@ -24,6 +28,10 @@ class CustomTextFormField extends StatefulWidget {
     this.onChanged,
     this.maxLine,
     this.maxLength,
+    this.textInputAction,
+    required this.keyboardType,
+    required this.textAlign,
+    this.inputFormatters,
   });
 
   @override
@@ -34,7 +42,9 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      keyboardType: TextInputType.text,
+      inputFormatters: widget.inputFormatters,
+      keyboardType: widget.keyboardType,
+    
       focusNode: widget.focusNode,
       cursorColor: Colors.blue,
       style: const TextStyle(
@@ -60,13 +70,14 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         border: InputBorder.none,
       ),
       autocorrect: false,
-      textInputAction: TextInputAction.done,
+      
+      textInputAction: widget.textInputAction,
       maxLines: widget.maxLine,
       showCursor: true,
       controller: widget.controller,
       maxLength: widget.maxLength,
       textAlignVertical: TextAlignVertical.center,
-      textAlign: TextAlign.left,
+      textAlign: widget.textAlign,
       maxLengthEnforcement: MaxLengthEnforcement.enforced,
       onChanged: widget.onChanged,
       onTap: widget.onTap,

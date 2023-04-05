@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:intl/date_symbol_data_local.dart';
 import 'package:nocoffee/src/config/constant/app_name.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:nocoffee/src/config/router/app_router.gr.dart';
 import 'package:nocoffee/src/config/theme/app_theme.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await initializeDateFormatting('ko');
+  await Hive.initFlutter();
 
   runApp(
     ProviderScope(

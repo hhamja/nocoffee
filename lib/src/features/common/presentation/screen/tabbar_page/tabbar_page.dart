@@ -1,10 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:nocoffee/src/config/constant/app_color.dart';
-import 'package:nocoffee/src/features/record/presentation/screen/calender_page/calender_page.dart';
-import 'package:nocoffee/src/features/record/presentation/screen/home_record_page/home_record_page.dart';
+import 'package:nocoffee/src/features/coffee/presentation/screen/calendar_page/calendar_page.dart';
+import 'package:nocoffee/src/features/coffee/presentation/screen/home_record_page/home_record_page.dart';
 import 'package:nocoffee/src/features/setting/presentation/screen/setting_page/setting_page.dart';
-import 'package:nocoffee/src/features/statistics/presentation/screen/statistics_page/statistics_page.dart';
+import 'package:nocoffee/src/features/coffee/presentation/screen/statistics_page/statistics_page.dart';
 
 class TabbarPage extends StatefulWidget {
   const TabbarPage({super.key});
