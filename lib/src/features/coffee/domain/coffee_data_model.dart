@@ -1,29 +1,24 @@
-import 'package:hive/hive.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 part 'coffee_data_model.g.dart';
+part 'coffee_data_model.freezed.dart';
 
-@HiveType(typeId: 0)
-class CoffeeDataModel {
-  // 데이터 입력 날짜(id)
-  @HiveField(0)
-  final DateTime date;
+@freezed
+@HiveType(typeId: 1, adapterName: 'CoffeeDataModelAdapter')
+class CoffeeDataModel extends HiveObject with _$CoffeeDataModel {
+  CoffeeDataModel._();
+  factory CoffeeDataModel({
+    // 데이터 입력 날짜 (key)
+    @HiveField(0) required DateTime date,
+    // 해당일의 총 마신 커피 수
+    @HiveField(1) required String coffeeCup,
+    // 해당일의 총 커피 구입 금액
+    @HiveField(2) required String coffeeCost,
+    // 메모
+    @HiveField(3) required String memo,
+  }) = _CoffeeDataModel;
 
-  // 커피 잔 수
-  @HiveField(1)
-  final int coffeeCup;
-
-  // 커피 구입 금액 (총 ?  하나 당?)
-  @HiveField(2)
-  final int coffeeCost;
-
-  // 메모
-  @HiveField(3)
-  final int memo;
-
-  CoffeeDataModel({
-    required this.date,
-    required this.coffeeCup,
-    required this.coffeeCost,
-    required this.memo,
-  });
+  factory CoffeeDataModel.fromJson(Map<String, dynamic> json) =>
+      _$CoffeeDataModelFromJson(json);
 }

@@ -3,19 +3,18 @@ import 'package:nocoffee/src/config/constant/app_color.dart';
 import 'package:nocoffee/src/features/coffee/presentation/widget/custom_table_calendar.dart';
 import 'package:table_calendar/table_calendar.dart';
 
-class OneWeekCalendarBox extends StatefulWidget {
-  const OneWeekCalendarBox({super.key});
-
-  @override
-  State<OneWeekCalendarBox> createState() => _OneWeekCalendarBoxState();
-}
-
-class _OneWeekCalendarBoxState extends State<OneWeekCalendarBox> {
-  DateTime _focusedDay = DateTime(
-    DateTime.now().year,
-    DateTime.now().month,
-    DateTime.now().day,
-  );
+class OneWeekCalendarBox extends StatelessWidget {
+  final List<dynamic> Function(DateTime)? eventLoader;
+  final DateTime focusedDay;
+  final void Function(DateTime, DateTime)? onDaySelected;
+  final CalendarFormat calendarFormat;
+  const OneWeekCalendarBox({
+    super.key,
+    this.eventLoader,
+    required this.focusedDay,
+    this.onDaySelected,
+    required this.calendarFormat,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,15 +28,12 @@ class _OneWeekCalendarBoxState extends State<OneWeekCalendarBox> {
         children: [
           const SizedBox(height: 8.0),
           CustomTableCalendar(
-            focusedDay: _focusedDay,
-            calendarFormat: CalendarFormat.week,
+            eventLoader: eventLoader,
+            calendarBuilders: const CalendarBuilders(),
+            focusedDay: focusedDay,
+            calendarFormat: calendarFormat,
             headerVisible: true,
-            onDaySelected: (DateTime selectedDay, DateTime focusedDay) {
-              setState(() {
-                _focusedDay = selectedDay;
-                _focusedDay = focusedDay;
-              });
-            },
+            onDaySelected: onDaySelected,
           ),
         ],
       ),

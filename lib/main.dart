@@ -5,22 +5,42 @@ import 'package:nocoffee/src/config/constant/app_name.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:nocoffee/src/config/router/app_router.gr.dart';
 import 'package:nocoffee/src/config/theme/app_theme.dart';
+import 'package:nocoffee/src/features/coffee/domain/coffee_data_model.dart';
 
 Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('ko');
   await Hive.initFlutter();
+  Hive.registerAdapter<CoffeeDataModel>(CoffeeDataModelAdapter());
+  // coffee 박스 오픈()
+  // 32에러 나오면 박스 완전 삭제 후 오픈
+  await Hive.openBox('coffee');
+
+  // await Hive.openBox('coffee');
 
   runApp(
-    ProviderScope(
+    const ProviderScope(
       child: App(),
     ),
   );
 }
 
-class App extends StatelessWidget {
-  App({Key? key}) : super(key: key);
+class App extends StatefulWidget {
+  const App({Key? key}) : super(key: key);
+
+  @override
+  State<App> createState() => _AppState();
+}
+
+class _AppState extends State<App> {
   final AppRouter appRouter = AppRouter();
+
+  @override
+  void dispose() {
+    // 앱 종료 시 Hive 닫기
+    Hive.close();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {

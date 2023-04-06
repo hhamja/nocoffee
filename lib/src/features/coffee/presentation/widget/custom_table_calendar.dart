@@ -8,6 +8,8 @@ class CustomTableCalendar extends StatelessWidget {
   final void Function(DateTime)? onPageChanged;
   final CalendarFormat calendarFormat;
   final bool headerVisible;
+  final List<dynamic> Function(DateTime)? eventLoader;
+  final CalendarBuilders<dynamic> calendarBuilders;
   const CustomTableCalendar({
     super.key,
     required this.focusedDay,
@@ -15,6 +17,8 @@ class CustomTableCalendar extends StatelessWidget {
     this.onDaySelected,
     required this.headerVisible,
     this.onPageChanged,
+    this.eventLoader,
+    required this.calendarBuilders,
   });
 
   @override
@@ -28,13 +32,11 @@ class CustomTableCalendar extends StatelessWidget {
         DateTime.now().month - 1,
         1,
       ),
-      // 달력의 마지막 날짜 : 1년 뒤 말일
-      lastDay: DateTime(
-        DateTime.now().year + 1,
-        12,
-        31,
-      ),
-
+      // 달력의 마지막 날짜 : 오늘
+      lastDay: DateTime.now(),
+      // eventLoader 콜백 함수 등록
+      eventLoader: eventLoader,
+      calendarBuilders: calendarBuilders,
       // 선택 된 날짜
       focusedDay: focusedDay,
       // 요일 표시 여부

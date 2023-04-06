@@ -44,7 +44,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
     return TextFormField(
       inputFormatters: widget.inputFormatters,
       keyboardType: widget.keyboardType,
-    
       focusNode: widget.focusNode,
       cursorColor: Colors.blue,
       style: const TextStyle(
@@ -57,7 +56,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         hintText: widget.hintText,
         fillColor: WHITE_COLOR,
         hintStyle: const TextStyle(
-          fontSize: 20,
+          fontSize: 18,
           height: 1.5,
           color: GREY_COLOR,
         ),
@@ -70,7 +69,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
         border: InputBorder.none,
       ),
       autocorrect: false,
-      
       textInputAction: widget.textInputAction,
       maxLines: widget.maxLine,
       showCursor: true,

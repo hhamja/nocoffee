@@ -8,7 +8,7 @@ part of 'coffee_data_model.dart';
 
 class CoffeeDataModelAdapter extends TypeAdapter<CoffeeDataModel> {
   @override
-  final int typeId = 0;
+  final int typeId = 1;
 
   @override
   CoffeeDataModel read(BinaryReader reader) {
@@ -17,17 +17,17 @@ class CoffeeDataModelAdapter extends TypeAdapter<CoffeeDataModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return CoffeeDataModel(
-      date: fields[0] as DateTime,
-      coffeeCup: fields[1] as int,
-      coffeeCost: fields[2] as int,
-      memo: fields[3] as int,
+      date: fields[0],
+      coffeeCup: fields[1],
+      coffeeCost: fields[2],
+      memo: fields[3],
     );
   }
 
   @override
   void write(BinaryWriter writer, CoffeeDataModel obj) {
     writer
-      ..writeByte(4)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.date)
       ..writeByte(1)
@@ -48,3 +48,23 @@ class CoffeeDataModelAdapter extends TypeAdapter<CoffeeDataModel> {
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }
+
+// **************************************************************************
+// JsonSerializableGenerator
+// **************************************************************************
+
+_$_CoffeeDataModel _$$_CoffeeDataModelFromJson(Map<String, dynamic> json) =>
+    _$_CoffeeDataModel(
+      date: DateTime.parse(json['date'] as String),
+      coffeeCup: json['coffeeCup'] as String,
+      coffeeCost: json['coffeeCost'] as String,
+      memo: json['memo'] as String,
+    );
+
+Map<String, dynamic> _$$_CoffeeDataModelToJson(_$_CoffeeDataModel instance) =>
+    <String, dynamic>{
+      'date': instance.date.toIso8601String(),
+      'coffeeCup': instance.coffeeCup,
+      'coffeeCost': instance.coffeeCost,
+      'memo': instance.memo,
+    };
