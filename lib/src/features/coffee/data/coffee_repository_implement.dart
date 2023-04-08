@@ -7,9 +7,9 @@ abstract class CoffeeRepositoryImplement {
   getCoffeeDataForDate(DateTime date) async {}
 
   // 전체 커피 기록 리스트로 받기
-  getCoffeeDataList() async {}
+  Future getAllCoffeeData() async {}
 
   // Hive "Coffee" Box 모든 데이터 지우기
   // 박스 존재는 그대로 남아있음
-  removeCoffeBoxData() async {}
+  Future removeCoffeBoxData() async {}
 }

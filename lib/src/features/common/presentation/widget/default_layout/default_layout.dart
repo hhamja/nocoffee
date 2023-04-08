@@ -21,7 +21,7 @@ class DefaultLayout extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        titleSpacing: leading != null ? 0 : 16,
+        titleSpacing: leading != null ? 0 : 20,
         centerTitle: false,
         title: title,
         leading: leading != null
@@ -36,13 +36,13 @@ class DefaultLayout extends StatelessWidget {
         actions: actions,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.symmetric(horizontal: 20),
         child: body,
       ),
       bottomSheet: Padding(
         padding: bottomNavigationBar == null
             ? EdgeInsets.zero
-            : const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+            : const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
         child: bottomNavigationBar,
       ),
     );

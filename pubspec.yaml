@@ -25,6 +25,7 @@ dependencies:
   hive_flutter:
   table_calendar: ^3.0.9
   currency_text_input_formatter: ^2.1.9
+  fl_chart: ^0.61.0
 
   
 dev_dependencies:

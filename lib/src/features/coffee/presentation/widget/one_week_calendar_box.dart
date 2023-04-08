@@ -19,7 +19,7 @@ class OneWeekCalendarBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 13, horizontal: 13),
+      padding: const EdgeInsets.fromLTRB(13, 13, 13, 30),
       decoration: BoxDecoration(
         color: WHITE_COLOR,
         borderRadius: BorderRadius.circular(20.0),
@@ -28,6 +28,15 @@ class OneWeekCalendarBox extends StatelessWidget {
         children: [
           const SizedBox(height: 8.0),
           CustomTableCalendar(
+            lastDay: DateTime.now(),
+            // 요일 cell의 높이
+            daysOfWeekHeight: 34,
+            outsideTextColor: TEXT_COLOR,
+            headerTextStyle: const TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 21.0,
+            ),
+            headerPadding: const EdgeInsets.fromLTRB(8, 0, 0, 13),
             eventLoader: eventLoader,
             calendarBuilders: const CalendarBuilders(),
             focusedDay: focusedDay,

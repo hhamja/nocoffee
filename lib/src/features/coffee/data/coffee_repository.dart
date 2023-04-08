@@ -15,45 +15,50 @@ class CoffeeRepository implements CoffeeRepositoryImplement {
     final coffeeBox = Hive.box('coffee');
     final coffeeDataModel = CoffeeDataModel(
         date: date, coffeeCup: cup, coffeeCost: cost, memo: memo);
-    // final Map<String, dynamic> coffeeMapData = {
-    //   'date': date,
-    //   'coffeeCup': cup,
-    //   'coffeeCost': cost,
-    //   'memo': momo,
-    // };
     debugPrint(coffeeDataModel.coffeeCost);
     debugPrint(coffeeDataModel.date.toString());
     debugPrint(coffeeDataModel.coffeeCup);
     debugPrint(coffeeDataModel.memo);
-
     coffeeBox.put(date.toString(), coffeeDataModel);
   }
 
   // 특정 일자의 커피기록 받기
   @override
-  CoffeeDataModel? getCoffeeDataForDate(DateTime date) {
+  CoffeeDataModel getCoffeeDataForDate(DateTime date) {
     final coffeeBox = Hive.box('coffee');
-    final mapData = coffeeBox.get(date.toString());
-    CoffeeDataModel? coffeeModel;
-    if (mapData == null) {
-      coffeeModel = null;
-    } else {
-      coffeeModel = CoffeeDataModel.fromJson(mapData);
-    }
+    final CoffeeDataModel coffeeModel = coffeeBox.get(date.toString(),
+        // 값이 없을 경우 기본 값
+        defaultValue: CoffeeDataModel(
+          date: date,
+          coffeeCup: '',
+          coffeeCost: '',
+          memo: '',
+        )) as CoffeeDataModel;
+
     return coffeeModel;
   }
 
-  // 전체 커피 기록 리스트로 받기
+  // 전체 커피 기록 받기
   @override
-  Future getCoffeeDataList() async {
+  Future<Map<DateTime, List<CoffeeDataModel>>> getAllCoffeeData() async {
     final coffeeBox = Hive.box('coffee');
-    final List x = coffeeBox.values.toList();
-    print(x);
+    Map<DateTime, List<CoffeeDataModel>> coffeeMap = {};
+
+    coffeeBox.keys.forEach((key) {
+      CoffeeDataModel coffeeModel = coffeeBox.get(key)!;
+      DateTime date = coffeeModel.date;
+      if (coffeeMap.containsKey(date)) {
+        coffeeMap[date]!.add(coffeeModel);
+      } else {
+        coffeeMap[date] = [coffeeModel];
+      }
+    });
+    return coffeeMap;
   }
 
   // 커피 박스의 모든 데이터 삭제
   @override
-  removeCoffeBoxData() async {
+  Future removeCoffeBoxData() async {
     final coffeeBox = Hive.box('coffee');
     await coffeeBox.clear();
   }

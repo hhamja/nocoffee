@@ -18,7 +18,7 @@ import '../../features/coffee/presentation/screen/calendar_page/calendar_page.da
     as _i3;
 import '../../features/coffee/presentation/screen/home_record_page/home_record_page.dart'
     as _i2;
-import '../../features/coffee/presentation/screen/statistics_page/statistics_page.dart'
+import '../../features/coffee/presentation/screen/line_graph_page/line_graph_page.dart'
     as _i4;
 import '../../features/common/presentation/screen/splash/splash.dart' as _i1;
 import '../../features/common/presentation/screen/tabbar_page/tabbar_page.dart'
@@ -52,16 +52,16 @@ class AppRouter extends _i11.RootStackRouter {
         child: const _i2.HomeRecordPage(),
       );
     },
-    CalenderRoute.name: (routeData) {
+    CalendarRoute.name: (routeData) {
       return _i11.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i3.CalenderPage(),
+        child: const _i3.CalendarPage(),
       );
     },
-    StatisticsRoute.name: (routeData) {
+    LineGraphRoute.name: (routeData) {
       return _i11.MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const _i4.StatisticsPage(),
+        child: const _i4.LineGraphPage(),
       );
     },
     TabbarRoute.name: (routeData) {
@@ -113,12 +113,12 @@ class AppRouter extends _i11.RootStackRouter {
           path: '/home-record-page',
         ),
         _i11.RouteConfig(
-          CalenderRoute.name,
-          path: '/calender-page',
+          CalendarRoute.name,
+          path: '/calendar-page',
         ),
         _i11.RouteConfig(
-          StatisticsRoute.name,
-          path: '/statistics-page',
+          LineGraphRoute.name,
+          path: '/line-graph-page',
         ),
         _i11.RouteConfig(
           TabbarRoute.name,
@@ -172,27 +172,27 @@ class HomeRecordRoute extends _i11.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.CalenderPage]
-class CalenderRoute extends _i11.PageRouteInfo<void> {
-  const CalenderRoute()
+/// [_i3.CalendarPage]
+class CalendarRoute extends _i11.PageRouteInfo<void> {
+  const CalendarRoute()
       : super(
-          CalenderRoute.name,
-          path: '/calender-page',
+          CalendarRoute.name,
+          path: '/calendar-page',
         );
 
-  static const String name = 'CalenderRoute';
+  static const String name = 'CalendarRoute';
 }
 
 /// generated route for
-/// [_i4.StatisticsPage]
-class StatisticsRoute extends _i11.PageRouteInfo<void> {
-  const StatisticsRoute()
+/// [_i4.LineGraphPage]
+class LineGraphRoute extends _i11.PageRouteInfo<void> {
+  const LineGraphRoute()
       : super(
-          StatisticsRoute.name,
-          path: '/statistics-page',
+          LineGraphRoute.name,
+          path: '/line-graph-page',
         );
 
-  static const String name = 'StatisticsRoute';
+  static const String name = 'LineGraphRoute';
 }
 
 /// generated route for
