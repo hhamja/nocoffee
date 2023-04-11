@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:currency_text_input_formatter/currency_text_input_formatter.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nocoffee/src/config/constant/app_color.dart';
 import 'package:nocoffee/src/features/coffee/data/coffee_repository.dart';
@@ -31,13 +32,13 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
     DateTime.now().year,
     DateTime.now().month,
     DateTime.now().day,
-  );
+  ).toUtc();
 
   @override
   void initState() {
     super.initState();
     final CoffeeDataModel coffeeDataForDate =
-        ref.read(coffeeDataForDateProvider(_focusedDay.toUtc()));
+        ref.read(coffeeDataForDateProvider(_focusedDay));
     cupTextController.text = coffeeDataForDate.coffeeCup;
     costTextController.text = coffeeDataForDate.coffeeCost;
     memoTextController.text = coffeeDataForDate.memo;
@@ -57,7 +58,6 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
 
     // 기록하기 버튼 클릭 시
     clickRecordButton() async {
-      print('클릭');
       if (cupTextController.text.isNotEmpty &&
           costTextController.text.isNotEmpty) {
         // coffee 박스에 데이터 넣기
@@ -67,6 +67,7 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
               costTextController.text,
               memoTextController.text,
             );
+
         return ref.refresh(calendarCoffeeDataProvider.future);
       } else {
         return null;
@@ -135,6 +136,12 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
                     children: [
                       Expanded(
                         child: HomeTextFieldBox(
+                          inputFormatters: [
+                            // 첫 숫자로 0입력 안되게 하기
+                            FilteringTextInputFormatter.allow(
+                              RegExp(r'^[1-9]\d*'),
+                            ),
+                          ],
                           unitWidget: cupTextController.text.isNotEmpty
                               ? const Text(
                                   '잔',
@@ -178,6 +185,7 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
                           maxLine: 1,
                           maxLength: 7,
                           inputFormatters: [
+                            // 화폐형식으로 바꾸기
                             CurrencyTextInputFormatter(
                               locale: 'ko',
                               decimalDigits: 0,
