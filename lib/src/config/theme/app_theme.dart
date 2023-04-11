@@ -19,14 +19,12 @@ class AppThemeData {
       titleTextStyle: TextStyle(
         color: TEXT_COLOR,
         fontSize: 18,
-        height: 1,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.bold,
       ),
       toolbarTextStyle: TextStyle(
         color: TEXT_COLOR,
         fontSize: 18,
-        height: 1,
-        fontWeight: FontWeight.w500,
+        fontWeight: FontWeight.bold,
       ),
       elevation: 0,
       backgroundColor: WHITE_COLOR,
