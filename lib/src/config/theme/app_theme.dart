@@ -50,6 +50,6 @@ class AppThemeData {
       elevation: 0,
     ),
     // 앱 기본 폰트
-    fontFamily: 'NotoSansCJKkr',
+    fontFamily: 'SpoqaHanSansNeo',
   );
 }

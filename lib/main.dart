@@ -7,16 +7,12 @@ import 'package:nocoffee/src/config/router/app_router.gr.dart';
 import 'package:nocoffee/src/config/theme/app_theme.dart';
 import 'package:nocoffee/src/features/coffee/domain/coffee_data_model.dart';
 
-Future main() async {
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDateFormatting('ko');
   await Hive.initFlutter();
   Hive.registerAdapter<CoffeeDataModel>(CoffeeDataModelAdapter());
-  // coffee 박스 오픈()
-  // 32에러 나오면 박스 완전 삭제 후 오픈
-  await Hive.openBox('coffee');
-
-  // await Hive.openBox('coffee');
+  await Hive.openBox<CoffeeDataModel>("coffee");
 
   runApp(
     const ProviderScope(

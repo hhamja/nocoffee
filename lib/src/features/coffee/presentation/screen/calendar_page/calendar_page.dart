@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nocoffee/src/config/constant/app_color.dart';
 import 'package:nocoffee/src/features/coffee/domain/coffee_data_model.dart';
-import 'package:nocoffee/src/features/coffee/presentation/provider/all_coffee_data_provider.dart';
+import 'package:nocoffee/src/features/coffee/presentation/provider/calendar_coffee_data_provider.dart';
 import 'package:nocoffee/src/features/coffee/presentation/widget/calendar_cell.dart';
 import 'package:nocoffee/src/features/coffee/presentation/widget/custom_table_calendar.dart';
 import 'package:nocoffee/src/features/common/presentation/widget/async_value/custom_error_data.dart';
@@ -25,7 +25,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
 
   @override
   Widget build(BuildContext context) {
-    final allCoffeeData = ref.watch(allCoffeeDataProvider);
+    final allCoffeeData = ref.watch(calendarCoffeeDataProvider);
     return Scaffold(
         appBar: AppBar(),
         body: allCoffeeData.when(

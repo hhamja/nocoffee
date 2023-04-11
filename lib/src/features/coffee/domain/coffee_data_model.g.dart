@@ -17,10 +17,10 @@ class CoffeeDataModelAdapter extends TypeAdapter<CoffeeDataModel> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return CoffeeDataModel(
-      date: fields[0],
-      coffeeCup: fields[1],
-      coffeeCost: fields[2],
-      memo: fields[3],
+      date: fields[0] ?? DateTime.now(),
+      coffeeCup: fields[1] ?? '',
+      coffeeCost: fields[2] ?? '',
+      memo: fields[3] ?? '',
     );
   }
 

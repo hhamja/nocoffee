@@ -25,7 +25,7 @@ class CoffeeRepository implements CoffeeRepositoryImplement {
   // 특정 일자의 커피기록 받기
   @override
   CoffeeDataModel getCoffeeDataForDate(DateTime date) {
-    final coffeeBox = Hive.box('coffee');
+    final coffeeBox = Hive.box<CoffeeDataModel>('coffee');
     final CoffeeDataModel coffeeModel = coffeeBox.get(date.toString(),
         // 값이 없을 경우 기본 값
         defaultValue: CoffeeDataModel(
@@ -38,10 +38,11 @@ class CoffeeRepository implements CoffeeRepositoryImplement {
     return coffeeModel;
   }
 
-  // 전체 커피 기록 받기
+  // 캘린더에 표시할 전체 커피 기록 받기
   @override
-  Future<Map<DateTime, List<CoffeeDataModel>>> getAllCoffeeData() async {
-    final coffeeBox = Hive.box('coffee');
+  Future<Map<DateTime, List<CoffeeDataModel>>>
+      getCoffeeDataForCalendar() async {
+    final coffeeBox = Hive.box<CoffeeDataModel>('coffee');
     Map<DateTime, List<CoffeeDataModel>> coffeeMap = {};
 
     coffeeBox.keys.forEach((key) {
@@ -54,6 +55,46 @@ class CoffeeRepository implements CoffeeRepositoryImplement {
       }
     });
     return coffeeMap;
+  }
+
+  // 차트에 표시할 7일 커피 기록 리스트로 받기
+  @override
+  Future<List<CoffeeDataModel>> getChartDataForWeek() async {
+    final coffeeBox = Hive.box<CoffeeDataModel>('coffee');
+    final List<CoffeeDataModel> modelList = coffeeBox.values.toList();
+    return modelList;
+  }
+
+  // 차트에 표시할 1달 커피 기록 리스트로 받기
+  @override
+  Future<List<CoffeeDataModel>> getChartDataForMonth() async {
+    final coffeeBox = Hive.box<CoffeeDataModel>('coffee');
+    final List<CoffeeDataModel> modelList = coffeeBox.values.toList();
+    return modelList;
+  }
+
+  // 차트에 표시할 3달 커피 기록 리스트로 받기
+  @override
+  Future<List<CoffeeDataModel>> getChartDataForThreeMonth() async {
+    final coffeeBox = Hive.box<CoffeeDataModel>('coffee');
+    final List<CoffeeDataModel> modelList = coffeeBox.values.toList();
+    return modelList;
+  }
+
+  // 차트에 표시할 3달 커피 기록 리스트로 받기
+  @override
+  Future<List<CoffeeDataModel>> getChartDataForSixMonth() async {
+    final coffeeBox = Hive.box<CoffeeDataModel>('coffee');
+    final List<CoffeeDataModel> modelList = coffeeBox.values.toList();
+    return modelList;
+  }
+
+  // 차트에 표시할 3달 커피 기록 리스트로 받기
+  @override
+  Future<List<CoffeeDataModel>> getChartDataForYear() async {
+    final coffeeBox = Hive.box<CoffeeDataModel>('coffee');
+    final List<CoffeeDataModel> modelList = coffeeBox.values.toList();
+    return modelList;
   }
 
   // 커피 박스의 모든 데이터 삭제

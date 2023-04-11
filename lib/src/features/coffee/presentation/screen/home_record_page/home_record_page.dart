@@ -4,7 +4,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:nocoffee/src/config/constant/app_color.dart';
 import 'package:nocoffee/src/features/coffee/data/coffee_repository.dart';
 import 'package:nocoffee/src/features/coffee/domain/coffee_data_model.dart';
-import 'package:nocoffee/src/features/coffee/presentation/provider/all_coffee_data_provider.dart';
+import 'package:nocoffee/src/features/coffee/presentation/provider/calendar_coffee_data_provider.dart';
+import 'package:nocoffee/src/features/coffee/presentation/provider/coffee_data_for_date_provider.dart';
 import 'package:nocoffee/src/features/coffee/presentation/widget/home_text_field_box.dart';
 import 'package:nocoffee/src/features/coffee/presentation/widget/one_week_calendar_box.dart';
 import 'package:nocoffee/src/features/coffee/presentation/widget/record_icon.dart';
@@ -52,12 +53,13 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
 
   @override
   Widget build(BuildContext context) {
-    final allCoffeeData = ref.watch(allCoffeeDataProvider);
+    final allCoffeeData = ref.watch(calendarCoffeeDataProvider);
 
     // 기록하기 버튼 클릭 시
     clickRecordButton() async {
-      if (cupTextController.text != cupTextController.text ||
-          costTextController.text != costTextController.text) {
+      print('클릭');
+      if (cupTextController.text.isNotEmpty &&
+          costTextController.text.isNotEmpty) {
         // coffee 박스에 데이터 넣기
         await ref.read(coffeeRepositoryProvider).addCoffeeData(
               _focusedDay,
@@ -65,9 +67,10 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
               costTextController.text,
               memoTextController.text,
             );
-        return ref.refresh(allCoffeeDataProvider.future);
+        return ref.refresh(calendarCoffeeDataProvider.future);
+      } else {
+        return null;
       }
-      return null;
     }
 
     return Scaffold(
@@ -85,7 +88,7 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
           RecordIconButton(
             onPressed: cupTextController.text.isNotEmpty &&
                     costTextController.text.isNotEmpty
-                ? clickRecordButton
+                ? () async => clickRecordButton()
                 : () async => showDialog(
                       context: context,
                       builder: (context) => const CustomOneButtonDialog(
@@ -208,7 +211,7 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
                       content: '기록하기',
                       onPressed: cupTextController.text.isNotEmpty &&
                               costTextController.text.isNotEmpty
-                          ? clickRecordButton
+                          ? () async => clickRecordButton()
                           : () async => showDialog(
                                 context: context,
                                 builder: (context) =>

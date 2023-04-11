@@ -31,17 +31,19 @@ class CustomCalendarCell extends StatelessWidget {
           ),
           recordText != ''
               ? Expanded(
-                  child: Center(
-                    child: Container(
-                      decoration: const BoxDecoration(
-                        color: PRIMARY_COLOR,
-                        shape: BoxShape.circle,
-                      ),
-                      padding: const EdgeInsets.all(5.0),
+                  child: Container(
+                    width: 30,
+                    height: 30,
+                    decoration: const BoxDecoration(
+                      color: PRIMARY_COLOR,
+                      shape: BoxShape.circle,
+                    ),
+                    child: Center(
                       child: Text(
                         recordText,
                         style: const TextStyle(
                           fontSize: 16,
+                          height: 1.3,
                           color: WHITE_COLOR,
                           fontWeight: FontWeight.w500,
                         ),
