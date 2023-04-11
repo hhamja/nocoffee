@@ -21,7 +21,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
     DateTime.now().year,
     DateTime.now().month,
     DateTime.now().day,
-  );
+  ).toUtc();
 
   @override
   Widget build(BuildContext context) {
@@ -53,29 +53,29 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                         calendarBuilders: CalendarBuilders(
                           outsideBuilder: (context, day, events) =>
                               CustomCalendarCell(
-                            day: day,
+                            day: day.toUtc(),
                             recordText: '',
                             daycColor: Colors.grey[200],
                           ),
                           defaultBuilder: (context, day, focusedDay) =>
                               CustomCalendarCell(
-                            day: day,
+                            day: day.toUtc(),
                             recordText: data[day]?[0].coffeeCup ?? '',
                           ),
                           todayBuilder: (context, day, focusedDay) =>
                               CustomCalendarCell(
-                            day: day,
+                            day: day.toUtc(),
                             recordText: data[day]?[0].coffeeCup ?? '',
                           ),
                           disabledBuilder: (context, day, focusedDay) =>
                               CustomCalendarCell(
-                            day: day,
+                            day: day.toUtc(),
                             daycColor: Colors.grey[200],
                             recordText: '',
                           ),
                           selectedBuilder: (context, day, focusedDay) =>
                               CustomCalendarCell(
-                            day: day,
+                            day: day.toUtc(),
                             recordText: '',
                           ),
                         ),

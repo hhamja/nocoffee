@@ -57,7 +57,7 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
     final allCoffeeData = ref.watch(calendarCoffeeDataProvider);
 
     // 기록하기 버튼 클릭 시
-    clickRecordButton() async {
+    Future clickRecordButton() async {
       if (cupTextController.text.isNotEmpty &&
           costTextController.text.isNotEmpty) {
         // coffee 박스에 데이터 넣기
@@ -89,7 +89,7 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
           RecordIconButton(
             onPressed: cupTextController.text.isNotEmpty &&
                     costTextController.text.isNotEmpty
-                ? () async => clickRecordButton()
+                ? () async => await clickRecordButton()
                 : () async => showDialog(
                       context: context,
                       builder: (context) => const CustomOneButtonDialog(
@@ -219,7 +219,7 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
                       content: '기록하기',
                       onPressed: cupTextController.text.isNotEmpty &&
                               costTextController.text.isNotEmpty
-                          ? () async => clickRecordButton()
+                          ? () async => await clickRecordButton()
                           : () async => showDialog(
                                 context: context,
                                 builder: (context) =>
