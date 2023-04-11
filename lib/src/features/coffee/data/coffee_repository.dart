@@ -12,9 +12,9 @@ class CoffeeRepository implements CoffeeRepositoryImplement {
   // 특정 일자의 커피 기록 추가 및 업데이트
   @override
   Future addCoffeeData(DateTime date, String cup, cost, memo) async {
-    final coffeeBox = Hive.box('coffee');
+    final coffeeBox = Hive.box<CoffeeDataModel>('coffee');
     final coffeeDataModel = CoffeeDataModel(
-        date: date, coffeeCup: cup, coffeeCost: cost, memo: memo);
+        date: date.toUtc(), coffeeCup: cup, coffeeCost: cost, memo: memo);
     debugPrint(coffeeDataModel.coffeeCost);
     debugPrint(coffeeDataModel.date.toString());
     debugPrint(coffeeDataModel.coffeeCup);
@@ -97,10 +97,17 @@ class CoffeeRepository implements CoffeeRepositoryImplement {
     return modelList;
   }
 
+  // 특정 일자의 커피 기록 삭제
+  @override
+  Future removeCoffeeDataForDate() async {
+    final coffeeBox = Hive.box<CoffeeDataModel>('coffee');
+    return coffeeBox.clear();
+  }
+
   // 커피 박스의 모든 데이터 삭제
   @override
-  Future removeCoffeBoxData() async {
-    final coffeeBox = Hive.box('coffee');
-    await coffeeBox.clear();
+  Future removeCoffeeBox() async {
+    final coffeeBox = Hive.box<CoffeeDataModel>('coffee');
+    return coffeeBox.clear();
   }
 }
