@@ -47,16 +47,15 @@ flutter:
     # api key를 숨기기 위한 env
     - assets/config/.env  
   fonts:
-    # 노토 산즈 kr
-    - family: NotoSansCJKkr
+    # 스포카 한 산스
+    - family: SpoqaHanSansNeo
       fonts:
-        - asset: assets/fonts/NotoSansCJKkr-Regular.otf
+        - asset: assets/fonts/SpoqaHanSansNeo-Regular.otf
           weight: 400
-        - asset: assets/fonts/NotoSansCJKkr-Medium.otf
+        - asset: assets/fonts/SpoqaHanSansNeo-Medium.otf
           weight: 500
-        - asset: assets/fonts/NotoSansCJKkr-Bold.otf
+        - asset: assets/fonts/SpoqaHanSansNeo-Bold.otf
           weight: 600
-
 
 flutter_icons:
   android: "launcher_icon" # android manifest랑 동일해야함
