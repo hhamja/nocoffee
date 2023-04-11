@@ -8,6 +8,7 @@ class CustomSmallDialog extends StatelessWidget {
   final String completeText;
   final Function() cancelFun;
   final Function() completeFun;
+  final Color? completeColor;
 
   const CustomSmallDialog({
     required this.content,
@@ -16,6 +17,7 @@ class CustomSmallDialog extends StatelessWidget {
     required this.cancelFun,
     required this.completeFun,
     super.key,
+    this.completeColor,
   });
 
   @override
@@ -47,7 +49,7 @@ class CustomSmallDialog extends StatelessWidget {
                 h: 45,
                 content: cancelText,
                 onPressed: cancelFun,
-                color: GREY_COLOR,
+                color: DARK_GREY_COLOR,
               ),
             ),
             const SizedBox(width: 8),
@@ -59,7 +61,7 @@ class CustomSmallDialog extends StatelessWidget {
                 h: 45,
                 content: completeText,
                 onPressed: completeFun,
-                color: PRIMARY_COLOR,
+                color: completeColor ?? PRIMARY_COLOR,
               ),
             ),
           ],

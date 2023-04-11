@@ -4,7 +4,16 @@ import 'package:nocoffee/src/config/constant/app_color.dart';
 class SettingTile extends StatelessWidget {
   final void Function() onTap;
   final String title;
-  const SettingTile({super.key, required this.onTap, required this.title});
+  final Color? textColor;
+  final Widget? trailing;
+
+  const SettingTile({
+    super.key,
+    required this.onTap,
+    required this.title,
+    this.textColor,
+    this.trailing,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,14 +22,12 @@ class SettingTile extends StatelessWidget {
       contentPadding: const EdgeInsets.symmetric(vertical: 3, horizontal: 16),
       title: Text(
         title,
-        style: const TextStyle(
+        style: TextStyle(
           fontSize: 20,
-          color: TEXT_COLOR,
+          color: textColor ?? TEXT_COLOR,
         ),
       ),
-      trailing: const Icon(
-        Icons.chevron_right_sharp,
-      ),
+      trailing: trailing ?? const Icon(Icons.chevron_right_sharp),
     );
   }
 }
