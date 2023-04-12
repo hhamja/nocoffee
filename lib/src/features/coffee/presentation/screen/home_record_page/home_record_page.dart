@@ -15,6 +15,7 @@ import 'package:nocoffee/src/features/common/presentation/widget/dialog/one_butt
 import 'package:nocoffee/src/features/common/presentation/widget/loading/circular_loading.dart';
 import 'package:nocoffee/src/features/common/presentation/widget/text_button/custom_fill_text_button.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 class HomeRecordPage extends ConsumerStatefulWidget {
   const HomeRecordPage({super.key});
@@ -27,12 +28,27 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
   TextEditingController cupTextController = TextEditingController();
   TextEditingController costTextController = TextEditingController();
   TextEditingController memoTextController = TextEditingController();
+  final FocusNode _cupFocusNode = FocusNode();
+  final FocusNode _costFocusNode = FocusNode();
+  final FocusNode _memoFocusNode = FocusNode();
 
   DateTime _focusedDay = DateTime(
     DateTime.now().year,
     DateTime.now().month,
     DateTime.now().day,
   ).toUtc();
+
+  // 기록완료 하단 토스트
+  void showBottomToast(String message) {
+    Fluttertoast.showToast(
+      msg: message,
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.BOTTOM,
+      backgroundColor: WHITE_COLOR,
+      textColor: TEXT_COLOR,
+      fontSize: 16.0,
+    );
+  }
 
   @override
   void initState() {
@@ -49,6 +65,10 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
     cupTextController.dispose();
     costTextController.dispose();
     memoTextController.dispose();
+    // 키보드 포커스 풀기
+    _cupFocusNode.unfocus();
+    _costFocusNode.unfocus();
+    _memoFocusNode.unfocus();
     super.dispose();
   }
 
@@ -58,6 +78,10 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
 
     // 기록하기 버튼 클릭 시
     Future clickRecordButton() async {
+      // 키보드 포커스 풀기
+      _cupFocusNode.unfocus();
+      _costFocusNode.unfocus();
+      _memoFocusNode.unfocus();
       if (cupTextController.text.isNotEmpty &&
           costTextController.text.isNotEmpty) {
         // coffee 박스에 데이터 넣기
@@ -67,7 +91,7 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
               costTextController.text,
               memoTextController.text,
             );
-
+        showBottomToast('기록완료');
         return ref.refresh(calendarCoffeeDataProvider.future);
       } else {
         return null;
@@ -136,6 +160,8 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
                     children: [
                       Expanded(
                         child: HomeTextFieldBox(
+                          focusNode: _cupFocusNode,
+                          boxOntTap: () async => _cupFocusNode.requestFocus(),
                           inputFormatters: [
                             // 첫 숫자로 0입력 안되게 하기
                             FilteringTextInputFormatter.allow(
@@ -166,6 +192,8 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
                       const SizedBox(width: 13),
                       Expanded(
                         child: HomeTextFieldBox(
+                          focusNode: _costFocusNode,
+                          boxOntTap: () async => _costFocusNode.requestFocus(),
                           unitWidget: costTextController.text.isNotEmpty
                               ? const Text(
                                   '원',
@@ -199,6 +227,8 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
                   ),
                   const SizedBox(height: 21),
                   HomeTextFieldBox(
+                    focusNode: _memoFocusNode,
+                    boxOntTap: () async => _memoFocusNode.requestFocus(),
                     unitWidget: const SizedBox.shrink(),
                     title: '메모',
                     onChanged: (value) => setState(() => value),
@@ -219,7 +249,7 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
                       content: '기록하기',
                       onPressed: cupTextController.text.isNotEmpty &&
                               costTextController.text.isNotEmpty
-                          ? () async => await clickRecordButton()
+                          ? () async => clickRecordButton()
                           : () async => showDialog(
                                 context: context,
                                 builder: (context) =>

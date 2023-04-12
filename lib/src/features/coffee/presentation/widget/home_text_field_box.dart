@@ -16,6 +16,9 @@ class HomeTextFieldBox extends StatelessWidget {
   final List<TextInputFormatter>? inputFormatters;
   final double itemHeightSpace;
   final Widget unitWidget;
+  final FocusNode? focusNode;
+  final void Function()? boxOntTap;
+
   const HomeTextFieldBox({
     super.key,
     required this.title,
@@ -30,13 +33,14 @@ class HomeTextFieldBox extends StatelessWidget {
     this.inputFormatters,
     required this.itemHeightSpace,
     required this.unitWidget,
+    this.focusNode,
+    this.boxOntTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    final FocusNode focusNode = FocusNode();
     return GestureDetector(
-      onTap: () async => focusNode.requestFocus(),
+      onTap: boxOntTap,
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 21),
         decoration: BoxDecoration(
@@ -58,6 +62,7 @@ class HomeTextFieldBox extends StatelessWidget {
               children: <Widget>[
                 Expanded(
                   child: CustomTextFormField(
+                    focusNode: focusNode,
                     inputFormatters: inputFormatters,
                     onChanged: onChanged,
                     hintText: hintText,
