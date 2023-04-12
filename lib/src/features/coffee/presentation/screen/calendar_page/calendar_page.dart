@@ -76,7 +76,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                           selectedBuilder: (context, day, focusedDay) =>
                               CustomCalendarCell(
                             day: day.toUtc(),
-                            recordText: '',
+                            recordText: data[day]?[0].coffeeCup ?? '',
                           ),
                         ),
                         onDaySelected: null,
