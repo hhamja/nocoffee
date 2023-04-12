@@ -18,12 +18,12 @@ class AppThemeData {
     appBarTheme: const AppBarTheme(
       titleTextStyle: TextStyle(
         color: TEXT_COLOR,
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: FontWeight.bold,
       ),
       toolbarTextStyle: TextStyle(
         color: TEXT_COLOR,
-        fontSize: 18,
+        fontSize: 22,
         fontWeight: FontWeight.bold,
       ),
       elevation: 0,

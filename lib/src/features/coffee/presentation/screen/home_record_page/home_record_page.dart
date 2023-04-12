@@ -102,7 +102,7 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
       backgroundColor: const Color(0xFFf0f2f5),
       appBar: AppBar(
         backgroundColor: const Color(0xFFf0f2f5),
-        leadingWidth: 100,
+        leadingWidth: 89,
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: Image.asset(
