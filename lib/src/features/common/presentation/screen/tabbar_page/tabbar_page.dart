@@ -76,7 +76,7 @@ class _TabbarPageState extends State<TabbarPage>
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.chart_bar),
             activeIcon: Icon(CupertinoIcons.chart_bar_fill),
-            label: '통계',
+            label: '차트',
           ),
           BottomNavigationBarItem(
             icon: Icon(CupertinoIcons.gear),
