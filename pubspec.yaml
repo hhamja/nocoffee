@@ -26,6 +26,8 @@ dependencies:
   table_calendar: ^3.0.9
   currency_text_input_formatter: ^2.1.9
   fl_chart: ^0.61.0
+  syncfusion_flutter_charts: ^21.1.39
+  fluttertoast: ^8.2.1
 
   
 dev_dependencies:

@@ -99,9 +99,9 @@ class CoffeeRepository implements CoffeeRepositoryImplement {
 
   // 특정 일자의 커피 기록 삭제
   @override
-  Future removeCoffeeDataForDate() async {
+  Future removeCoffeeDataForDate(String date) async {
     final coffeeBox = Hive.box<CoffeeDataModel>('coffee');
-    return coffeeBox.clear();
+    return coffeeBox.delete(date);
   }
 
   // 커피 박스의 모든 데이터 삭제

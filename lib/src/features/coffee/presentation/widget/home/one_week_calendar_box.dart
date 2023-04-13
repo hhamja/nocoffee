@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nocoffee/src/config/constant/app_color.dart';
-import 'package:nocoffee/src/features/coffee/presentation/widget/custom_table_calendar.dart';
+import 'package:nocoffee/src/features/coffee/presentation/widget/calendar/custom_table_calendar.dart';
 import 'package:table_calendar/table_calendar.dart';
 
 class OneWeekCalendarBox extends StatelessWidget {

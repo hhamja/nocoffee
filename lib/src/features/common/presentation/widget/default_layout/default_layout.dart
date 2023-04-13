@@ -6,6 +6,7 @@ class DefaultLayout extends StatelessWidget {
   final Widget? leading;
   final Widget? bottomNavigationBar;
   final List<Widget>? actions;
+  final PreferredSizeWidget? bottom;
 
   const DefaultLayout({
     required this.body,
@@ -14,14 +15,16 @@ class DefaultLayout extends StatelessWidget {
     this.actions,
     this.bottomNavigationBar,
     Key? key,
+    this.bottom,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        bottom: bottom,
         elevation: 0,
-        titleSpacing: leading != null ? 0 : 20,
+        titleSpacing: leading != null ? 0 : 16,
         centerTitle: false,
         title: title,
         leading: leading != null
@@ -36,13 +39,13 @@ class DefaultLayout extends StatelessWidget {
         actions: actions,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20),
+        padding: const EdgeInsets.symmetric(horizontal: 16),
         child: body,
       ),
       bottomSheet: Padding(
         padding: bottomNavigationBar == null
             ? EdgeInsets.zero
-            : const EdgeInsets.symmetric(vertical: 20, horizontal: 20),
+            : const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
         child: bottomNavigationBar,
       ),
     );

@@ -13,7 +13,9 @@ class AppThemeData {
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: PRIMARY_COLOR,
     ),
-
+    tabBarTheme: const TabBarTheme(
+     
+    ),
     // 앱바
     appBarTheme: const AppBarTheme(
       titleTextStyle: TextStyle(

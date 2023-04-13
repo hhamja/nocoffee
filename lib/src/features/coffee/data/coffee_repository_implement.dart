@@ -25,7 +25,7 @@ abstract class CoffeeRepositoryImplement {
   Future getChartDataForYear() async {}
 
   // 특정 일자의 커피 기록 삭제
-  Future removeCoffeeDataForDate() async {}
+  Future removeCoffeeDataForDate(String date) async {}
 
   // Hive "Coffee" Box 모든 데이터 지우기
   // 박스 존재는 그대로 남아있음
