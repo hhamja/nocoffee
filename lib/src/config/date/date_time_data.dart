@@ -8,7 +8,7 @@ const int SIX_MONTH_DURATION = 7 * 4 * 6 - 1;
 const int YEAR_DURATION = 7 * 4 * 12 - 1;
 
 class DateTimeData {
-  // DateTime
+  // 오늘
   static final DateTime today = DateTime.utc(
       DateTime.now().year, DateTime.now().month, DateTime.now().day, 0, 0, 0);
   // 일주 차트
@@ -20,32 +20,43 @@ class DateTimeData {
   static final DateTime oneDayAgo = today.subtract(const Duration(days: 1));
 
   // 한달 차트
-  static final DateTime secondWeekFirstDay =
-      today.subtract(const Duration(days: 7));
-  static final DateTime secondWeekLastDay =
-      today.subtract(const Duration(days: 13));
-  static final DateTime thirdWeekFirstDay =
-      today.subtract(const Duration(days: 14));
-  static final DateTime thirdWeekLastDay =
-      today.subtract(const Duration(days: 20));
-  static final DateTime fourthWeekFirstDay =
-      today.subtract(const Duration(days: 21));
-  static final DateTime fourthWeekLastDay =
+  // 1주차
+  static final DateTime firstWeekFirstDay =
       today.subtract(const Duration(days: 27));
+  static final DateTime firstWeekLastDay =
+      today.subtract(const Duration(days: 21));
+  // 2주차
+  static final DateTime secondWeekFirstDay =
+      today.subtract(const Duration(days: 20));
+  static final DateTime secondWeekLastDay =
+      today.subtract(const Duration(days: 14));
+  // 3주차
+  static final DateTime thirdWeekFirstDay =
+      today.subtract(const Duration(days: 13));
+  static final DateTime thirdWeekLastDay =
+      today.subtract(const Duration(days: 7));
+  // 4주차
+  static final DateTime fourthWeekFirstDay =
+      today.subtract(const Duration(days: 6));
+  static final DateTime fourthWeekLastDay =
+      today.subtract(const Duration(days: 0));
 
   // 3개월 차트
+  // 첫달
   static final DateTime firstMonthFirstDay =
-      today.subtract(const Duration(days: 7));
+      today.subtract(const Duration(days: 0));
   static final DateTime firstMonthLastDay =
-      today.subtract(const Duration(days: 13));
+      today.subtract(const Duration(days: 0 + 27));
+  // 두번 쨰 달
   static final DateTime secondMonthFirstDay =
-      today.subtract(const Duration(days: 7));
+      today.subtract(const Duration(days: 28));
   static final DateTime secondMonthLastDay =
-      today.subtract(const Duration(days: 13));
+      today.subtract(const Duration(days: 28 + 27));
+  // 세번 쨰 달
   static final DateTime thirdMonthFirstDay =
-      today.subtract(const Duration(days: 7));
+      today.subtract(const Duration(days: 57));
   static final DateTime thirdMonthLastDay =
-      today.subtract(const Duration(days: 13));
+      today.subtract(const Duration(days: 57 + 27));
 
   // 6개월 차트
   // 1년 차트

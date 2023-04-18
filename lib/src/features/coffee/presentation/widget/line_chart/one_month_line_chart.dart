@@ -12,42 +12,63 @@ import 'package:nocoffee/src/features/common/presentation/widget/loading/circula
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class OneMonthLineChart extends ConsumerWidget {
-  final List<CoffeeDataModel> coffeModelList;
-  const OneMonthLineChart({super.key, required this.coffeModelList});
+  const OneMonthLineChart({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final oneMonthProvider = ref.watch(oneMonthChartDataProvider);
+    final DateFormat formatter = DateFormat('M/d');
+    final String formattedOneMonthAgo =
+        DateFormat('yyyy년 M월 d일').format(DateTimeData.firstWeekFirstDay);
     final String formattedToday =
-        DateFormat('yyyy년 M월 d일').format(DateTimeData.today);
-    final String formattedSevenDayAgo =
-        DateFormat('yyyy년 M월 d일').format(DateTimeData.sixDayAgo);
+        DateFormat('yyyy년 M월 d일').format(DateTimeData.fourthWeekLastDay);
+    final String firstWeekFirstDay =
+        formatter.format(DateTimeData.firstWeekFirstDay);
+    final String firstWeekLastDay =
+        formatter.format(DateTimeData.firstWeekLastDay);
+    final String secondWeekFirstDay =
+        formatter.format(DateTimeData.secondWeekFirstDay);
+    final String secondWeekLastDay =
+        formatter.format(DateTimeData.secondWeekLastDay);
+    final String thirdWeekFirstDay =
+        formatter.format(DateTimeData.thirdWeekFirstDay);
+    final String thirdWeekLastDay =
+        formatter.format(DateTimeData.thirdWeekLastDay);
+    final String fourthWeekFirstDay =
+        formatter.format(DateTimeData.fourthWeekFirstDay);
+    final String fourthWeekLastDay =
+        formatter.format(DateTimeData.fourthWeekLastDay);
 
     return oneMonthProvider.when(
-      data: (oneWeekModelList) => Column(
+      data: (oneMonthModelList) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            '$formattedSevenDayAgo ~ $formattedToday',
+            '$formattedOneMonthAgo ~ $formattedToday',
             textAlign: TextAlign.start,
             style: const TextStyle(fontSize: 18),
           ),
           const SizedBox(height: 21),
           Expanded(
             child: SfCartesianChart(
+              margin: EdgeInsets.zero,
               // 오른쪽, 윗쪽 차트 border 설정
               plotAreaBorderWidth: 0,
               primaryXAxis: DateTimeCategoryAxis(
-                visibleMaximum: DateTimeData.today,
-                visibleMinimum: DateTimeData.sixDayAgo,
-                maximum: DateTimeData.today,
-                minimum: DateTimeData.sixDayAgo,
+                visibleMinimum: DateTimeData.firstWeekFirstDay,
+                visibleMaximum: DateTimeData.fourthWeekLastDay,
+                // 4주 전
+                minimum: DateTimeData.firstWeekFirstDay,
+                // 오늘
+                maximum: DateTimeData.fourthWeekLastDay,
                 intervalType: DateTimeIntervalType.days,
-                dateFormat: DateFormat('E', 'ko'),
-                interval: 1,
+                labelStyle:
+                    const TextStyle(color: Colors.transparent, height: 0.1),
+                dateFormat: DateFormat('M/d'),
+                // 7일 간격
+                interval: 7,
                 tickPosition: TickPosition.inside,
-                labelAlignment: LabelAlignment.center,
-                labelStyle: const TextStyle(fontSize: 12),
+                // labelPlacement: LabelPlacement.betweenTicks,
               ),
               primaryYAxis: NumericAxis(
                   visibleMinimum: 0,
@@ -57,7 +78,10 @@ class OneMonthLineChart extends ConsumerWidget {
                   // maximum: 100,
                   labelFormat: '{value}잔',
                   interval: 10,
-                  labelStyle: const TextStyle(fontSize: 12)),
+                  labelStyle: const TextStyle(
+                      fontSize: 14,
+                      color: DARK_GREY_COLOR,
+                      fontFamily: 'SpoqaHanSansNeo')),
               tooltipBehavior: TooltipBehavior(
                 enable: true,
                 shouldAlwaysShow: true,
@@ -103,7 +127,8 @@ class OneMonthLineChart extends ConsumerWidget {
                       EmptyPointSettings(mode: EmptyPointMode.drop),
                   isVisible: true,
                   color: PRIMARY_COLOR,
-                  dataSource: oneWeekModelList,
+
+                  dataSource: oneMonthModelList,
                   xValueMapper: (model, _) => model.date,
                   yValueMapper: (model, _) =>
                       model.coffeeCup != '' ? int.parse(model.coffeeCup) : null,
@@ -111,6 +136,22 @@ class OneMonthLineChart extends ConsumerWidget {
                   markerSettings: const MarkerSettings(isVisible: true),
                   dataLabelSettings: const DataLabelSettings(isVisible: false),
                 ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.only(left: 35.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                Text('$firstWeekFirstDay - $firstWeekLastDay',
+                    style: const TextStyle(color: DARK_GREY_COLOR)),
+                Text('$secondWeekFirstDay - $secondWeekLastDay',
+                    style: const TextStyle(color: DARK_GREY_COLOR)),
+                Text('$thirdWeekFirstDay - $thirdWeekLastDay',
+                    style: const TextStyle(color: DARK_GREY_COLOR)),
+                Text('$fourthWeekFirstDay - $fourthWeekLastDay',
+                    style: const TextStyle(color: DARK_GREY_COLOR)),
               ],
             ),
           ),

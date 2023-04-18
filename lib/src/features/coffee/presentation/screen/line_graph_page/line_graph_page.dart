@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nocoffee/src/features/coffee/presentation/widget/line_chart/one_month_line_chart.dart';
 import 'package:nocoffee/src/features/coffee/presentation/widget/line_chart/one_week_line_chart.dart';
 import 'package:nocoffee/src/features/coffee/presentation/widget/line_chart/tab_bar.dart';
 import 'package:nocoffee/src/features/common/presentation/widget/default_layout/default_layout.dart';
@@ -35,7 +36,7 @@ class _LineGraphPageState extends State<LineGraphPage>
               controller: _tabController,
               children: const <Widget>[
                 OneWeekLineChart(),
-                OneWeekLineChart(),
+                OneMonthLineChart(),
                 OneWeekLineChart(),
                 OneWeekLineChart(),
                 OneWeekLineChart(),

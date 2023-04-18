@@ -31,6 +31,7 @@ class OneWeekLineChart extends ConsumerWidget {
           const SizedBox(height: 21),
           Expanded(
             child: SfCartesianChart(
+              margin: EdgeInsets.zero,
               // 오른쪽, 윗쪽 차트 border 설정
               plotAreaBorderWidth: 0,
               primaryXAxis: DateTimeCategoryAxis(
@@ -43,7 +44,10 @@ class OneWeekLineChart extends ConsumerWidget {
                 interval: 1,
                 tickPosition: TickPosition.inside,
                 labelAlignment: LabelAlignment.center,
-                labelStyle: const TextStyle(fontSize: 12),
+                labelStyle: const TextStyle(
+                    fontSize: 14,
+                    color: DARK_GREY_COLOR,
+                    fontFamily: 'SpoqaHanSansNeo'),
               ),
               primaryYAxis: NumericAxis(
                   visibleMinimum: 0,
@@ -53,7 +57,10 @@ class OneWeekLineChart extends ConsumerWidget {
                   // maximum: 100,
                   labelFormat: '{value}잔',
                   interval: 10,
-                  labelStyle: const TextStyle(fontSize: 12)),
+                  labelStyle: const TextStyle(
+                      fontSize: 14,
+                      color: DARK_GREY_COLOR,
+                      fontFamily: 'SpoqaHanSansNeo')),
               tooltipBehavior: TooltipBehavior(
                 enable: true,
                 shouldAlwaysShow: true,
