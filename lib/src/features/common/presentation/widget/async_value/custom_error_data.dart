@@ -6,27 +6,27 @@ class CustomErrorData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+    return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(
+          const Icon(
             CupertinoIcons.wifi_exclamationmark,
             size: 150,
             color: LIGHT_GREY_COLOR,
           ),
-          SizedBox(height: 13),
-          Text(
+          const SizedBox(height: 13),
+          const Text(
             '네트워크 오류',
             style: TextStyle(
               fontSize: 18,
             ),
           ),
-          SizedBox(height: 89),
+          const SizedBox(height: 89),
           Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
+            children: const [
               Text(
                 '1. 데이터 연결 상태를 확인해주세요.',
                 style: TextStyle(

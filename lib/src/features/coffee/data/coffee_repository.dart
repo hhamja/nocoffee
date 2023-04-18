@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:nocoffee/src/config/date/date_time_data.dart';
 import 'package:nocoffee/src/features/coffee/data/coffee_repository_implement.dart';
 import 'package:nocoffee/src/features/coffee/domain/coffee_data_model.dart';
 
@@ -61,39 +62,121 @@ class CoffeeRepository implements CoffeeRepositoryImplement {
   @override
   Future<List<CoffeeDataModel>> getChartDataForWeek() async {
     final coffeeBox = Hive.box<CoffeeDataModel>('coffee');
-    final List<CoffeeDataModel> modelList = coffeeBox.values.toList();
+
+    final DateTime now = DateTime.utc(
+        DateTime.now().year, DateTime.now().month, DateTime.now().day, 0, 0, 0);
+    final List<CoffeeDataModel> modelList = [];
+
+    // 1주일 Date 반복문
+    // 과거일수록 list 앞
+    for (int i = WEEK_DURATION; i >= 0; i--) {
+      final date = now.subtract(Duration(days: i));
+      final CoffeeDataModel coffeeDataModel = coffeeBox.get(date.toString()) ??
+          CoffeeDataModel(date: date, coffeeCup: '', coffeeCost: '', memo: '');
+      // if (coffeeDataModel != null) {
+      //   // 해당 날짜의 값이 있는 경우
+      modelList.add(coffeeDataModel);
+      // } else {
+      //   // 해당 날짜의 값이 없는 경우
+      //   null;
+      // }
+    }
     return modelList;
   }
 
-  // 차트에 표시할 1달 커피 기록 리스트로 받기
+  // 1개월 차트 커피 기록 받기
   @override
   Future<List<CoffeeDataModel>> getChartDataForMonth() async {
     final coffeeBox = Hive.box<CoffeeDataModel>('coffee');
-    final List<CoffeeDataModel> modelList = coffeeBox.values.toList();
+    final DateTime now = DateTime.utc(
+        DateTime.now().year, DateTime.now().month, DateTime.now().day, 0, 0, 0);
+    final List<CoffeeDataModel> modelList = [];
+
+    // 1달 Date 반복문
+    // 과거일수록 list 앞
+    for (int i = MONTH_DURATION; i >= 0; i--) {
+      final DateTime date = now.subtract(Duration(days: i));
+      final CoffeeDataModel? coffeeDataModel = coffeeBox.get(date.toString());
+      if (coffeeDataModel != null) {
+        // 해당 날짜의 값이 있는 경우
+        modelList.add(coffeeDataModel);
+      } else {
+        // 해당 날짜의 값이 없는 경우
+        null;
+      }
+    }
     return modelList;
   }
 
-  // 차트에 표시할 3달 커피 기록 리스트로 받기
+  // 3개월 차트 커피 기록 받기
   @override
   Future<List<CoffeeDataModel>> getChartDataForThreeMonth() async {
     final coffeeBox = Hive.box<CoffeeDataModel>('coffee');
-    final List<CoffeeDataModel> modelList = coffeeBox.values.toList();
+    final DateTime now = DateTime.utc(
+        DateTime.now().year, DateTime.now().month, DateTime.now().day, 0, 0, 0);
+    final List<CoffeeDataModel> modelList = [];
+
+    // 3개월 Date 반복문
+    // 과거일수록 list 앞
+    for (int i = THREE_MONTH_DURATION; i >= 0; i--) {
+      final DateTime date = now.subtract(Duration(days: i));
+      final CoffeeDataModel? coffeeDataModel = coffeeBox.get(date.toString());
+      if (coffeeDataModel != null) {
+        // 해당 날짜의 값이 있는 경우
+        modelList.add(coffeeDataModel);
+      } else {
+        // 해당 날짜의 값이 없는 경우
+        null;
+      }
+    }
     return modelList;
   }
 
-  // 차트에 표시할 3달 커피 기록 리스트로 받기
+  // 6개월 차트 커피 기록 받기
   @override
   Future<List<CoffeeDataModel>> getChartDataForSixMonth() async {
     final coffeeBox = Hive.box<CoffeeDataModel>('coffee');
-    final List<CoffeeDataModel> modelList = coffeeBox.values.toList();
+    final DateTime now = DateTime.utc(
+        DateTime.now().year, DateTime.now().month, DateTime.now().day, 0, 0, 0);
+    final List<CoffeeDataModel> modelList = [];
+
+    // 6개월 Date 반복문
+    // 과거일수록 list 앞
+    for (int i = SIX_MONTH_DURATION; i >= 0; i--) {
+      final DateTime date = now.subtract(Duration(days: i));
+      final CoffeeDataModel? coffeeDataModel = coffeeBox.get(date.toString());
+      if (coffeeDataModel != null) {
+        // 해당 날짜의 값이 있는 경우
+        modelList.add(coffeeDataModel);
+      } else {
+        // 해당 날짜의 값이 없는 경우
+        null;
+      }
+    }
     return modelList;
   }
 
-  // 차트에 표시할 3달 커피 기록 리스트로 받기
+  // 1년 차트 커피 기록 받기
   @override
   Future<List<CoffeeDataModel>> getChartDataForYear() async {
     final coffeeBox = Hive.box<CoffeeDataModel>('coffee');
-    final List<CoffeeDataModel> modelList = coffeeBox.values.toList();
+    final DateTime now = DateTime.utc(
+        DateTime.now().year, DateTime.now().month, DateTime.now().day, 0, 0, 0);
+    final List<CoffeeDataModel> modelList = [];
+
+    // 1년 Date 반복문
+    // 과거일수록 list 앞
+    for (int i = YEAR_DURATION; i >= 0; i--) {
+      final DateTime date = now.subtract(Duration(days: i));
+      final CoffeeDataModel? coffeeDataModel = coffeeBox.get(date.toString());
+      if (coffeeDataModel != null) {
+        // 해당 날짜의 값이 있는 경우
+        modelList.add(coffeeDataModel);
+      } else {
+        // 해당 날짜의 값이 없는 경우
+        null;
+      }
+    }
     return modelList;
   }
 

@@ -5,7 +5,7 @@ publish_to: 'none'
 version: 1.0.0+1
 
 environment:
-  sdk: '>=3.0.0-288.0.dev <4.0.0'
+  sdk: '>=2.19.6 <3.0.0'
 
 dependencies:
   flutter:
@@ -34,7 +34,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-  build_runner: ^2.4.1
+  build_runner: ^2.3.0
   hive_generator:
   freezed: ^2.3.2
   json_serializable: ^6.6.1
@@ -46,8 +46,6 @@ flutter:
   assets:
     - assets/
     - assets/app_icon/
-    # api key를 숨기기 위한 env
-    - assets/config/.env  
   fonts:
     # 스포카 한 산스
     - family: SpoqaHanSansNeo

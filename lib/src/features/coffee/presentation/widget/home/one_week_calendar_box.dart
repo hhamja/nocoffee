@@ -18,6 +18,8 @@ class OneWeekCalendarBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final DateTime lastDay = DateTime.utc(
+        DateTime.now().year, DateTime.now().month, DateTime.now().day, 0, 0, 0);
     return Container(
       padding: const EdgeInsets.fromLTRB(13, 13, 13, 30),
       decoration: BoxDecoration(
@@ -28,7 +30,7 @@ class OneWeekCalendarBox extends StatelessWidget {
         children: [
           const SizedBox(height: 8.0),
           CustomTableCalendar(
-            lastDay: DateTime.now(),
+            lastDay: lastDay,
             // 요일 cell의 높이
             daysOfWeekHeight: 34,
             outsideTextColor: TEXT_COLOR,

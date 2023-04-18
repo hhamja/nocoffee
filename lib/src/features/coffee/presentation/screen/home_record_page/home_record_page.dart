@@ -32,11 +32,8 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
   final FocusNode _costFocusNode = FocusNode();
   final FocusNode _memoFocusNode = FocusNode();
 
-  DateTime _focusedDay = DateTime(
-    DateTime.now().year,
-    DateTime.now().month,
-    DateTime.now().day,
-  ).toUtc();
+  DateTime _focusedDay = DateTime.utc(
+      DateTime.now().year, DateTime.now().month, DateTime.now().day, 0, 0, 0);
 
   // 기록완료 하단 토스트
   void showBottomToast(String message) {

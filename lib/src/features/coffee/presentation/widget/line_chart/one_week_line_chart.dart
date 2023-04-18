@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -11,19 +9,17 @@ import 'package:nocoffee/src/features/common/presentation/widget/async_value/cus
 import 'package:nocoffee/src/features/common/presentation/widget/loading/circular_loading.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-class OneMonthLineChart extends ConsumerWidget {
-  final List<CoffeeDataModel> coffeModelList;
-  const OneMonthLineChart({super.key, required this.coffeModelList});
+class OneWeekLineChart extends ConsumerWidget {
+  const OneWeekLineChart({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final oneMonthProvider = ref.watch(oneMonthChartDataProvider);
+    final oneWeekProvider = ref.watch(oneWeekChartDataProvider);
     final String formattedToday =
         DateFormat('yyyy년 M월 d일').format(DateTimeData.today);
     final String formattedSevenDayAgo =
         DateFormat('yyyy년 M월 d일').format(DateTimeData.sixDayAgo);
-
-    return oneMonthProvider.when(
+    return oneWeekProvider.when(
       data: (oneWeekModelList) => Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -66,7 +62,6 @@ class OneMonthLineChart extends ConsumerWidget {
                   final String date = DateFormat('yyyy/M/d').format(point.x);
                   const TextStyle textStyle =
                       TextStyle(color: WHITE_COLOR, fontSize: 16);
-
                   return Container(
                     width: 120,
                     height: 80,

@@ -9,11 +9,11 @@ class AppNoticePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const DefaultLayout(
-        leading: CustomBackButton(),
-        title: Text('공지사항'),
+    return DefaultLayout(
+        leading: const CustomBackButton(),
+        title: const Text('공지사항'),
         body: Column(
-          children: [
+          children: const [
             ListTile(
               contentPadding: EdgeInsets.all(0),
               title: Text(

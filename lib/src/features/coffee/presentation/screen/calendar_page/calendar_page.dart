@@ -17,11 +17,8 @@ class CalendarPage extends ConsumerStatefulWidget {
 }
 
 class _CalendarPageState extends ConsumerState<CalendarPage> {
-  DateTime focusedDay = DateTime(
-    DateTime.now().year,
-    DateTime.now().month,
-    DateTime.now().day,
-  ).toUtc();
+  DateTime focusedDay = DateTime.utc(
+      DateTime.now().year, DateTime.now().month, DateTime.now().day, 0, 0, 0);
 
   @override
   Widget build(BuildContext context) {

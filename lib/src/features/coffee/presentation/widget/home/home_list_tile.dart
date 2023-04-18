@@ -26,7 +26,6 @@ class HomeListTile extends StatelessWidget {
         title,
         style: const TextStyle(fontSize: 21),
       ),
-      titleAlignment: ListTileTitleAlignment.center,
       title: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         crossAxisAlignment: CrossAxisAlignment.end,
