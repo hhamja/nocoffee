@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:nocoffee/src/features/coffee/presentation/widget/line_chart/one_month_line_chart.dart';
-import 'package:nocoffee/src/features/coffee/presentation/widget/line_chart/one_week_line_chart.dart';
+import 'package:nocoffee/src/features/coffee/presentation/screen/line_graph_page/one_month_line_chart.dart';
+import 'package:nocoffee/src/features/coffee/presentation/screen/line_graph_page/one_week_line_chart.dart';
+import 'package:nocoffee/src/features/coffee/presentation/screen/line_graph_page/one_year_line_chart.dart';
+import 'package:nocoffee/src/features/coffee/presentation/screen/line_graph_page/six_month_line_chart.dart';
 import 'package:nocoffee/src/features/coffee/presentation/widget/line_chart/tab_bar.dart';
+import 'package:nocoffee/src/features/coffee/presentation/screen/line_graph_page/three_month_line_chart.dart';
 import 'package:nocoffee/src/features/common/presentation/widget/default_layout/default_layout.dart';
 
 class LineGraphPage extends StatefulWidget {
@@ -17,7 +20,7 @@ class _LineGraphPageState extends State<LineGraphPage>
 
   @override
   void initState() {
-    _tabController = TabController(length: 5, vsync: this);
+    _tabController = TabController(length: 3, vsync: this);
     super.initState();
   }
 
@@ -37,13 +40,14 @@ class _LineGraphPageState extends State<LineGraphPage>
               children: const <Widget>[
                 OneWeekLineChart(),
                 OneMonthLineChart(),
-                OneWeekLineChart(),
-                OneWeekLineChart(),
-                OneWeekLineChart(),
-                // OneMonthLineChart(coffeModelList: coffeeModelList),
-                // ThreeMonthLineChart(coffeModelList: coffeeModelList),
-                // SixMonthLineChart(coffeModelList: coffeeModelList),
-                // OneYearLineChart(coffeModelList: coffeeModelList)
+                ThreeMonthLineChart(),
+
+                //////////
+                // 나중에 사용자가 모이게 되면, 6개월과 1년 차트 추가 고려
+                //////////
+
+                // SixMonthLineChart(),
+                // OneYearLineChart(),
               ],
             ),
           ),

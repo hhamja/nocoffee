@@ -8,8 +8,8 @@ class LineChartTabbar extends StatelessWidget {
     Tab(text: '7일'),
     Tab(text: '1개월'),
     Tab(text: '3개월'),
-    Tab(text: '6개월'),
-    Tab(text: '1년'),
+    // Tab(text: '6개월'),
+    // Tab(text: '1년'),
   ];
   @override
   Widget build(BuildContext context) {

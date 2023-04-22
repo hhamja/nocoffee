@@ -13,7 +13,7 @@ class DateTimeData {
       DateTime.now().year, DateTime.now().month, DateTime.now().day, 0, 0, 0);
   // 일주 차트
   static final DateTime sixDayAgo = today.subtract(const Duration(days: 6));
-  static final DateTime fiveayAgo = today.subtract(const Duration(days: 5));
+  static final DateTime fiveDayAgo = today.subtract(const Duration(days: 5));
   static final DateTime fourDayAgo = today.subtract(const Duration(days: 4));
   static final DateTime threeDayAgo = today.subtract(const Duration(days: 3));
   static final DateTime twoDayAgo = today.subtract(const Duration(days: 2));
@@ -42,21 +42,21 @@ class DateTimeData {
       today.subtract(const Duration(days: 0));
 
   // 3개월 차트
-  // 첫달
+  // 3달 전
   static final DateTime firstMonthFirstDay =
-      today.subtract(const Duration(days: 0));
+      today.subtract(const Duration(days: 56 + 27));
   static final DateTime firstMonthLastDay =
-      today.subtract(const Duration(days: 0 + 27));
-  // 두번 쨰 달
+      today.subtract(const Duration(days: 56));
+  // 2달 전
   static final DateTime secondMonthFirstDay =
-      today.subtract(const Duration(days: 28));
-  static final DateTime secondMonthLastDay =
       today.subtract(const Duration(days: 28 + 27));
-  // 세번 쨰 달
+  static final DateTime secondMonthLastDay =
+      today.subtract(const Duration(days: 28));
+  // 이번 달
   static final DateTime thirdMonthFirstDay =
-      today.subtract(const Duration(days: 57));
+      today.subtract(const Duration(days: 27));
   static final DateTime thirdMonthLastDay =
-      today.subtract(const Duration(days: 57 + 27));
+      today.subtract(const Duration(days: 0));
 
   // 6개월 차트
   // 1년 차트
