@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.nocoffee.nocoffee.nocoffee">
+    package="com.today.coffee">
 
     <!--  디버그 모드에서는 INTERNET 권한이 없어도 API 요청 등이 동작한다. 릴리즈 모드에서 사용하기 위해서는 해당 권한이 필요하다 -->
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -8,7 +8,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
-        android:label="nocoffee"
+        android:label="오늘의커피"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
         <activity

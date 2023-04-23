@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 const Color TEXT_COLOR = Color(0xFF222222);
 
 // 브랜드 컬러
-const Color PRIMARY_COLOR = Color(0xFF5f0080);
+const Color PRIMARY_COLOR = Color(0xFF0063ff);
 
 // 검은색
 const Color BLACK_COLOR = Color(0xFF000000);

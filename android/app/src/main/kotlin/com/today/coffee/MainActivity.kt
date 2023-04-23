@@ -1,4 +1,4 @@
-package com.nocoffee.nocoffee.nocoffee
+package com.today.coffee
 
 import io.flutter.embedding.android.FlutterActivity
 
