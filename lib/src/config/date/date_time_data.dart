@@ -58,34 +58,25 @@ class DateTimeData {
   static final DateTime thirdMonthLastDay =
       today.subtract(const Duration(days: 0));
 
-  // 6개월 차트
   // 1년 차트
-
-  // // DateTime -> double
-  // static final double sixDayToDouble =
-  //     sixDayAgo.millisecondsSinceEpoch.toDouble() / 100000;
-  // static final double fiveDayToDouble =
-  //     fiveayAgo.millisecondsSinceEpoch.toDouble() / 100000;
-  // static final double fourDayToDouble =
-  //     fourDayAgo.millisecondsSinceEpoch.toDouble() / 100000;
-  // static final double threeDayToDouble =
-  //     threeDayAgo.millisecondsSinceEpoch.toDouble() / 100000;
-  // static final double twoDayToDouble =
-  //     twoDayAgo.millisecondsSinceEpoch.toDouble() / 100000;
-  // static final double oneDayToDouble =
-  //     oneDayAgo.millisecondsSinceEpoch.toDouble() / 100000;
-  // static final double todayToDouble =
-  //     today.millisecondsSinceEpoch.toDouble() / 100000;
-
-  //
-  static final DateTime oneWeekAgo =
-      today.subtract(const Duration(days: WEEK_DURATION));
-  static final DateTime oneMonthAgo =
-      today.subtract(const Duration(days: MONTH_DURATION));
-  static final DateTime threeMonthAgo =
-      today.subtract(const Duration(days: THREE_MONTH_DURATION));
-  static final DateTime sixMonthAgo =
-      today.subtract(const Duration(days: SIX_MONTH_DURATION));
-  static final DateTime oneYearAgo =
-      today.subtract(const Duration(days: YEAR_DURATION));
+  // 1분기
+  static final DateTime firstQuarterFirstDay =
+      today.subtract(const Duration(days: 7 * 4 * 12 - 1));
+  static final DateTime firstQuarterLastDay =
+      today.subtract(const Duration(days: 7 * 4 * 9));
+  // 2분기
+  static final DateTime secondQuarterFirstDay =
+      today.subtract(const Duration(days: 7 * 4 * 9 - 1));
+  static final DateTime secondQuarterLastDay =
+      today.subtract(const Duration(days: 7 * 4 * 6));
+  // 3분기
+  static final DateTime thirdQuarterFirstDay =
+      today.subtract(const Duration(days: 7 * 4 * 6 - 1));
+  static final DateTime thirdQuarterLastDay =
+      today.subtract(const Duration(days: 7 * 4 * 3));
+  // 4분기
+  static final DateTime fourthQuarterFirstDay =
+      today.subtract(const Duration(days: 7 * 4 * 3 - 1));
+  static final DateTime fourthQuarterLastDay =
+      today.subtract(const Duration(days: 0));
 }

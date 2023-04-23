@@ -14,23 +14,25 @@ class OneYearLineChart extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final DateFormat xLabelformatter = DateFormat('M/d');
     final DateFormat titleFormatter = DateFormat('yyyy년 M월 d일');
-    final String formattedOneMonthAgo =
-        titleFormatter.format(DateTimeData.firstMonthFirstDay);
+    final String formattedOneYearAgo =
+        titleFormatter.format(DateTimeData.firstQuarterFirstDay);
     final String formattedToday = titleFormatter.format(DateTimeData.today);
 
     final List<String> xAxisLabelList = [
-      '${xLabelformatter.format(DateTimeData.firstMonthFirstDay)} - ${xLabelformatter.format(DateTimeData.firstMonthLastDay)}',
-      '${xLabelformatter.format(DateTimeData.secondMonthFirstDay)} - ${xLabelformatter.format(DateTimeData.secondMonthLastDay)}',
-      '${xLabelformatter.format(DateTimeData.thirdMonthFirstDay)} - ${xLabelformatter.format(DateTimeData.thirdMonthLastDay)}',
+      '${xLabelformatter.format(DateTimeData.firstQuarterFirstDay)} - ${xLabelformatter.format(DateTimeData.firstQuarterLastDay)}',
+      '${xLabelformatter.format(DateTimeData.secondQuarterFirstDay)} - ${xLabelformatter.format(DateTimeData.secondQuarterLastDay)}',
+      '${xLabelformatter.format(DateTimeData.thirdQuarterFirstDay)} - ${xLabelformatter.format(DateTimeData.thirdQuarterLastDay)}',
+      '${xLabelformatter.format(DateTimeData.fourthQuarterFirstDay)} - ${xLabelformatter.format(DateTimeData.fourthQuarterLastDay)}',
     ];
-    final oneYearProvider = ref.watch(oneYearChartDataProvider);
 
+    final oneYearProvider = ref.watch(oneYearChartDataProvider);
     return oneYearProvider.when(
       data: (oneYearModelList) => CustomLineChartBody(
-        title: '$formattedOneMonthAgo ~ $formattedToday',
-        minX: DateTimeData.firstMonthFirstDay,
-        maxX: DateTimeData.thirdMonthLastDay,
-        interval: 28,
+        title: '$formattedOneYearAgo ~ $formattedToday',
+        minX: DateTimeData.firstQuarterFirstDay,
+        maxX: DateTimeData.fourthQuarterLastDay,
+        // 12개(12주) == 3달
+        interval: 7 * 4 * 3,
         dataSource: oneYearModelList,
         xAxisLabelList: xAxisLabelList,
       ),

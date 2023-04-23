@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:nocoffee/src/config/constant/app_color.dart';
@@ -24,6 +25,13 @@ class CustomLineChartBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // max 커피 값
+    final double maxCup = dataSource
+        .map((model) => double.tryParse(model.coffeeCup) ?? 0)
+        .reduce(max);
+    // ex) maxCup = 11, maxY = 20
+    final double maxY = (maxCup ~/ 10 + 1) * 10;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -48,25 +56,30 @@ class CustomLineChartBody extends StatelessWidget {
                 color: Colors.transparent,
                 height: 0.1,
               ),
-              dateFormat: DateFormat('M/d'),
+              // dateFormat: DateFormat('M/d'),
               interval: interval,
               tickPosition: TickPosition.inside,
-              // labelPlacement: LabelPlacement.betweenTicks,
             ),
             primaryYAxis: NumericAxis(
               visibleMinimum: 0,
-              // visibleMaximum: 100,
+              visibleMaximum: maxY,
+              labelsExtent: 35,
               tickPosition: TickPosition.inside,
               minimum: 0,
-              // maximum: 100,
+              maximum: maxY,
               labelFormat: '{value}잔',
-              interval: 10,
+              // interval: 1,
+              rangePadding: ChartRangePadding.normal,
+              // 몇구간으로 나눌지 결정하는 속성
+              // ex) 4 -> y를 4개로 나누어 주세요
+              desiredIntervals: 5,
               labelStyle: const TextStyle(
                 fontSize: 14,
                 color: DARK_GREY_COLOR,
                 fontFamily: 'SpoqaHanSansNeo',
               ),
             ),
+
             tooltipBehavior: TooltipBehavior(
               enable: true,
               shouldAlwaysShow: true,
@@ -109,9 +122,8 @@ class CustomLineChartBody extends StatelessWidget {
               tooltipPosition: TooltipPosition.pointer,
               activationMode: ActivationMode.singleTap,
             ),
-
-            series: <LineSeries<CoffeeDataModel, DateTime>>[
-              LineSeries(
+            series: <FastLineSeries<CoffeeDataModel, DateTime>>[
+              FastLineSeries(
                 emptyPointSettings:
                     EmptyPointSettings(mode: EmptyPointMode.drop),
                 isVisible: true,
@@ -138,6 +150,7 @@ class CustomLineChartBody extends StatelessWidget {
                       child: Text(e,
                           textAlign: TextAlign.center,
                           style: const TextStyle(
+                            fontSize: 14,
                             color: DARK_GREY_COLOR,
                           ))),
                 )

@@ -169,6 +169,34 @@ class CoffeeRepository implements CoffeeRepositoryImplement {
           );
       modelList.add(coffeeDataModel);
     }
+
+    // final List<CoffeeDataModel> weeklyAverageList = [];
+    // for (int i = 0; i < 48; i++) {
+    //   final startIndex = i * 7;
+    //   final endIndex = startIndex + 6;
+    //   // 주 평균 커피 잔 계산
+    //   final cupAverage = modelList
+    //           .sublist(startIndex, endIndex)
+    //           .map((e) => e.coffeeCup == '' ? 0 : int.parse(e.coffeeCup))
+    //           .reduce((a, b) => a + b) ~/
+    //       7;
+    //   // 주 평균 커피 금액 계산
+    //   final costAverage = modelList
+    //           .sublist(startIndex, endIndex)
+    //           .map((e) => e.coffeeCost == '' ? 0 : int.parse(e.coffeeCup))
+    //           .reduce((a, b) => a + b) ~/
+    //       7;
+    //   weeklyAverageList.add(
+    //     CoffeeDataModel(
+    //       // 해당 주의 첫번쨰 날짜
+    //       date: modelList[startIndex].date,
+    //       coffeeCup: cupAverage == 0 ? '' : cupAverage.toString(),
+    //       coffeeCost: costAverage == 0 ? '' : costAverage.toString(),
+    //       memo: '',
+    //     ),
+    //   );
+    // }
+
     return modelList;
   }
 

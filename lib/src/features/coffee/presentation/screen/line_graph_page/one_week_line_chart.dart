@@ -16,7 +16,7 @@ class OneWeekLineChart extends ConsumerWidget {
     final DateFormat xLabelFormatter = DateFormat.E('ko');
     final DateFormat titleFormatter = DateFormat('yyyy년 M월 d일');
     final String formattedToday = titleFormatter.format(DateTimeData.today);
-    final String formattedSevenDayAgo =
+    final String formattedOneWeekAgo =
         titleFormatter.format(DateTimeData.sixDayAgo);
 
     final List<String> xAxisLabelList = [
@@ -31,7 +31,7 @@ class OneWeekLineChart extends ConsumerWidget {
 
     return oneWeekProvider.when(
       data: (oneWeekModelList) => CustomLineChartBody(
-        title: '$formattedSevenDayAgo ~ $formattedToday',
+        title: '$formattedOneWeekAgo ~ $formattedToday',
         minX: DateTimeData.sixDayAgo,
         maxX: DateTimeData.today,
         interval: 1,

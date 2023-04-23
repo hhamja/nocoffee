@@ -47,7 +47,8 @@ class SettingPage extends StatelessWidget {
                     cancelFun: () async => context.router.pop(),
                     completeFun: () async => await ref
                         .read(coffeeRepositoryProvider)
-                        .removeCoffeeBox(),
+                        .removeCoffeeBox()
+                        .then((_) => context.router.pop()),
                   ),
                 );
               },

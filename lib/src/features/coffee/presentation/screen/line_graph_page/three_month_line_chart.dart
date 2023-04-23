@@ -14,7 +14,7 @@ class ThreeMonthLineChart extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final DateFormat xLabelformatter = DateFormat('M/d');
     final DateFormat titleFormatter = DateFormat('yyyy년 M월 d일');
-    final String formattedOneMonthAgo =
+    final String formattedThreeMonthAgo =
         titleFormatter.format(DateTimeData.firstMonthFirstDay);
     final String formattedToday = titleFormatter.format(DateTimeData.today);
 
@@ -27,7 +27,7 @@ class ThreeMonthLineChart extends ConsumerWidget {
     final threeMonthProvider = ref.watch(threeMonthChartDataProvider);
     return threeMonthProvider.when(
       data: (threeMonthModelList) => CustomLineChartBody(
-        title: '$formattedOneMonthAgo ~ $formattedToday',
+        title: '$formattedThreeMonthAgo ~ $formattedToday',
         minX: DateTimeData.firstMonthFirstDay,
         maxX: DateTimeData.thirdMonthLastDay,
         interval: 28,
