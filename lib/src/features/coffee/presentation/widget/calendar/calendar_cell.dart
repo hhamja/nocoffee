@@ -23,33 +23,24 @@ class CustomCalendarCell extends StatelessWidget {
         children: [
           Text(
             day.day.toString(),
-            textAlign: TextAlign.left,
+            textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 16,
-              color: daycColor ?? TEXT_COLOR,
+              fontSize: 20,
+              fontWeight: FontWeight.w500,
+              color: recordText == '' ? LIGHT_GREY_COLOR : TEXT_COLOR,
             ),
           ),
+          const SizedBox(height: 5),
           recordText != ''
-              ? Expanded(
-                  child: Container(
-                    width: 30,
-                    height: 30,
-                    decoration: const BoxDecoration(
-                      color: PRIMARY_COLOR,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Center(
-                      child: Text(
-                        recordText,
-                        style: const TextStyle(
-                          fontSize: 16,
-                          height: 1.3,
-                          color: WHITE_COLOR,
-                          fontWeight: FontWeight.w500,
-                        ),
-                      ),
-                    ),
+              ? Text(
+                  '+$recordText',
+                  style: const TextStyle(
+                    fontSize: 16,
+                    color: PRIMARY_COLOR,
+                    fontWeight: FontWeight.w500,
                   ),
+                  //   ),
+                  // ),
                 )
               : const SizedBox.shrink(),
         ],

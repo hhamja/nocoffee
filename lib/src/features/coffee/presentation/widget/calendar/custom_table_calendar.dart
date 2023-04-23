@@ -36,8 +36,12 @@ class CustomTableCalendar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final TextStyle dayOfWeekTextStyle = calendarFormat == CalendarFormat.month
+        ? const TextStyle(fontSize: 18, color: DARK_GREY_COLOR)
+        : const TextStyle(fontSize: 16, color: DARK_GREY_COLOR);
+
     return TableCalendar(
-      startingDayOfWeek: StartingDayOfWeek.monday,
+      // startingDayOfWeek: StartingDayOfWeek.monday,
       shouldFillViewport: shouldFillViewport ?? false,
       onPageChanged: onPageChanged,
       locale: 'ko_KR',
@@ -56,6 +60,7 @@ class CustomTableCalendar extends StatelessWidget {
       focusedDay: focusedDay,
       // 요일 표시 여부
       daysOfWeekVisible: true,
+
       calendarFormat: calendarFormat,
 
       onDaySelected: onDaySelected,
@@ -66,15 +71,32 @@ class CustomTableCalendar extends StatelessWidget {
       // 요일 부분의 높이 설정
       daysOfWeekHeight: daysOfWeekHeight,
       // 월 ~ 일 텍스트 스타일 지정
-      daysOfWeekStyle: const DaysOfWeekStyle(
-        weekdayStyle: TextStyle(
-          fontSize: 14,
-        ),
-        weekendStyle: TextStyle(
-          fontSize: 14,
-        ),
+      daysOfWeekStyle: DaysOfWeekStyle(
+        weekdayStyle: dayOfWeekTextStyle,
+        weekendStyle: dayOfWeekTextStyle,
       ),
+
       calendarStyle: CalendarStyle(
+        // tableBorder: TableBorder(
+        //   horizontalInside: calendarFormat == CalendarFormat.month
+        //       ? const BorderSide(
+        //           color: LIGHT_GREY_COLOR,
+        //           width: 1,
+        //         )
+        //       : BorderSide.none,
+        //   // verticalInside: BorderSide(
+        //   //   color: LIGHT_GREY_COLOR,
+        //   //   width: 1,
+        //   // ),
+        //   // top: BorderSide(
+        //   //   color: LIGHT_GREY_COLOR,
+        //   //   width: 1,
+        //   // ),
+        //   // bottom: BorderSide(
+        //   //   color: LIGHT_GREY_COLOR,
+        //   //   width: 1,
+        //   // ),
+        // ),
         isTodayHighlighted: true,
         // 마커 여러개이면 셀 영역을 벗어날지 여부
         canMarkersOverflow: false,
@@ -136,20 +158,19 @@ class CustomTableCalendar extends StatelessWidget {
         formatButtonVisible: false,
         // 연.월.일 텍스트 스타일
         titleTextStyle: headerTextStyle,
-
         // 연.월.일 가운데 정렬 여부
         titleCentered: false,
         leftChevronPadding: EdgeInsets.zero,
         rightChevronPadding: EdgeInsets.zero,
-        //헤더 박스 패딩
+        // 헤더 박스 패딩
         headerPadding: headerPadding,
         leftChevronVisible: false,
         rightChevronVisible: false,
-        //왼쪽 화살표 아이콘 버튼
+        // 왼쪽 화살표 아이콘 버튼
         leftChevronIcon: const Icon(
           Icons.arrow_left,
         ),
-        //오른쪽 화살표 아이콘 버튼
+        // 오른쪽 화살표 아이콘 버튼
         rightChevronIcon: const Icon(
           Icons.arrow_right,
         ),

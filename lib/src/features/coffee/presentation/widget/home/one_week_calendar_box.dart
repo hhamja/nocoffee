@@ -8,6 +8,7 @@ class OneWeekCalendarBox extends StatelessWidget {
   final DateTime focusedDay;
   final void Function(DateTime, DateTime)? onDaySelected;
   final CalendarFormat calendarFormat;
+
   const OneWeekCalendarBox({
     super.key,
     this.eventLoader,
@@ -20,15 +21,15 @@ class OneWeekCalendarBox extends StatelessWidget {
   Widget build(BuildContext context) {
     final DateTime lastDay = DateTime.utc(
         DateTime.now().year, DateTime.now().month, DateTime.now().day, 0, 0, 0);
+
     return Container(
-      padding: const EdgeInsets.fromLTRB(13, 13, 13, 30),
+      padding: const EdgeInsets.fromLTRB(13, 13, 13, 34),
       decoration: BoxDecoration(
         color: WHITE_COLOR,
         borderRadius: BorderRadius.circular(20.0),
       ),
       child: Column(
         children: [
-          const SizedBox(height: 8.0),
           CustomTableCalendar(
             lastDay: lastDay,
             // 요일 cell의 높이
@@ -38,7 +39,7 @@ class OneWeekCalendarBox extends StatelessWidget {
               fontWeight: FontWeight.bold,
               fontSize: 21.0,
             ),
-            headerPadding: const EdgeInsets.fromLTRB(8, 0, 0, 13),
+            headerPadding: const EdgeInsets.fromLTRB(8, 21, 0, 21),
             eventLoader: eventLoader,
             calendarBuilders: const CalendarBuilders(),
             focusedDay: focusedDay,

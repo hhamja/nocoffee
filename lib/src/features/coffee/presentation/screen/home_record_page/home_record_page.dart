@@ -151,7 +151,7 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
                       });
                     },
                   ),
-                  const SizedBox(height: 16),
+                  const SizedBox(height: 21),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -242,7 +242,7 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
                     padding: const EdgeInsets.symmetric(vertical: 34),
                     child: CustomFilledTextButton(
                       w: MediaQuery.of(context).size.width,
-                      h: 54,
+                      h: 55,
                       content: '기록하기',
                       onPressed: cupTextController.text.isNotEmpty &&
                               costTextController.text.isNotEmpty

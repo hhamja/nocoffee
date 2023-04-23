@@ -23,6 +23,7 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
   @override
   Widget build(BuildContext context) {
     final allCoffeeData = ref.watch(calendarCoffeeDataProvider);
+
     return Scaffold(
         appBar: AppBar(),
         body: allCoffeeData.when(
@@ -33,46 +34,38 @@ class _CalendarPageState extends ConsumerState<CalendarPage> {
                 child: Column(
                   children: [
                     SizedBox(
-                      height: MediaQuery.of(context).size.height * 0.7,
+                      height: MediaQuery.of(context).size.height * 0.75,
                       child: CustomTableCalendar(
-                        lastDay: DateTime(DateTime.now().year + 5, 12, 31),
+                        lastDay: DateTime.utc(DateTime.now().year + 5, 12, 31),
                         daysOfWeekHeight: 89,
                         shouldFillViewport: true,
                         outsideTextColor: LIGHT_GREY_COLOR,
                         headerTextStyle: const TextStyle(
                           fontWeight: FontWeight.bold,
-                          fontSize: 24.0,
+                          fontSize: 27.0,
                         ),
-                        headerPadding: const EdgeInsets.fromLTRB(4, 0, 0, 5),
+                        headerPadding: const EdgeInsets.fromLTRB(4, 8, 0, 34),
                         focusedDay: focusedDay,
                         calendarFormat: CalendarFormat.month,
                         headerVisible: true,
                         calendarBuilders: CalendarBuilders(
                           outsideBuilder: (context, day, events) =>
-                              CustomCalendarCell(
-                            day: day.toUtc(),
-                            recordText: '',
-                            daycColor: Colors.grey[200],
-                          ),
+                              const SizedBox.shrink(),
+                          disabledBuilder: (context, day, focusedDay) =>
+                              const SizedBox.shrink(),
                           defaultBuilder: (context, day, focusedDay) =>
                               CustomCalendarCell(
-                            day: day.toUtc(),
+                            day: day,
                             recordText: data[day]?[0].coffeeCup ?? '',
                           ),
                           todayBuilder: (context, day, focusedDay) =>
                               CustomCalendarCell(
-                            day: day.toUtc(),
+                            day: day,
                             recordText: data[day]?[0].coffeeCup ?? '',
-                          ),
-                          disabledBuilder: (context, day, focusedDay) =>
-                              CustomCalendarCell(
-                            day: day.toUtc(),
-                            daycColor: Colors.grey[200],
-                            recordText: '',
                           ),
                           selectedBuilder: (context, day, focusedDay) =>
                               CustomCalendarCell(
-                            day: day.toUtc(),
+                            day: day,
                             recordText: data[day]?[0].coffeeCup ?? '',
                           ),
                         ),

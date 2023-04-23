@@ -42,7 +42,7 @@ class HomeTextFieldBox extends StatelessWidget {
     return GestureDetector(
       onTap: boxOntTap,
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 21),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 34),
         decoration: BoxDecoration(
           color: WHITE_COLOR,
           borderRadius: BorderRadius.circular(20.0),
