@@ -63,11 +63,11 @@ class CustomLineChartBody extends StatelessWidget {
             primaryYAxis: NumericAxis(
               visibleMinimum: 0,
               visibleMaximum: maxY,
-              labelsExtent: 35,
+              labelsExtent: 30,
               tickPosition: TickPosition.inside,
               minimum: 0,
               maximum: maxY,
-              labelFormat: '{value}잔',
+              labelFormat: '{value}',
               // interval: 1,
               rangePadding: ChartRangePadding.normal,
               // 몇구간으로 나눌지 결정하는 속성
@@ -140,7 +140,7 @@ class CustomLineChartBody extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 45),
+          padding: const EdgeInsets.only(left: 37),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.max,
@@ -149,9 +149,11 @@ class CustomLineChartBody extends StatelessWidget {
                   (e) => Expanded(
                       child: Text(e,
                           textAlign: TextAlign.center,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 14,
-                            color: DARK_GREY_COLOR,
+                            color: e == xAxisLabelList.last
+                                ? BLACK_COLOR
+                                : GREY_COLOR,
                           ))),
                 )
                 .toList(),
