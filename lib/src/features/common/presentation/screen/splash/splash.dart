@@ -42,7 +42,7 @@ class SplashPage extends StatelessWidget {
                 children: [
                   const SizedBox(height: 150),
                   Image.asset(
-                    'assets/app_icon/petpick.png',
+                    'assets/app_icon/coffee_stop.png',
                     width: 150,
                     height: 350,
                   ),

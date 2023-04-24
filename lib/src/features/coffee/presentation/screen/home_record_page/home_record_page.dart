@@ -103,7 +103,7 @@ class _HomeRecordPageState extends ConsumerState<HomeRecordPage> {
         leading: Padding(
           padding: const EdgeInsets.only(left: 16),
           child: Image.asset(
-            'assets/app_icon/petpick.png',
+            'assets/app_icon/coffee_stop.png',
           ),
         ),
         actions: [

@@ -39,7 +39,7 @@ class _TermsPolicyAgreementPageState extends State<TermsPolicyAgreementPage> {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             Image.asset(
-              'assets/app_icon/petpick.png',
+              'assets/app_icon/coffee_stop.png',
               width: 150,
             ),
             const SizedBox(height: 55),
