@@ -75,7 +75,7 @@ class CustomLineChartBody extends StatelessWidget {
               desiredIntervals: 5,
               labelStyle: const TextStyle(
                 fontSize: 14,
-                color: DARK_GREY_COLOR,
+                color: GREY_COLOR,
                 fontFamily: 'SpoqaHanSansNeo',
               ),
             ),
@@ -152,7 +152,7 @@ class CustomLineChartBody extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             color: e == xAxisLabelList.last
-                                ? BLACK_COLOR
+                                ? TEXT_COLOR
                                 : GREY_COLOR,
                           ))),
                 )
